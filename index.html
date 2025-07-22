@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tony Mikhael Soryan - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    .hero-image {
+      background-image: url('assets/tony.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+  <!-- Navigation with Drawer -->
+  <nav class="bg-gray-800 shadow-md fixed w-full z-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-20">
+        <a href="#home" class="text-2xl font-bold text-white">Tony Mikhael Soryan</a>
+        <div class="md:hidden">
+          <button id="menu-toggle" class="focus:outline-none text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#about" class="hover:text-blue-300 transition-colors text-white">About</a>
+          <a href="#skills" class="hover:text-blue-300 transition-colors text-white">Skills</a>
+          <a href="#projects" class="hover:text-blue-300 transition-colors text-white">Projects</a>
+          <a href="#certifications" class="hover:text-blue-300 transition-colors text-white">Certifications</a>
+          <a href="#education" class="hover:text-blue-300 transition-colors text-white">Education</a>
+          <a href="#contact" class="hover:text-blue-300 transition-colors text-white">Contact</a>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="fixed top-0 left-0 w-64 bg-gray-800 shadow-lg h-full transform -translate-x-full transition-transform duration-300 ease-in-out z-30 p-4 hidden md:hidden">
+      <button id="close-toggle" class="absolute top-4 right-4 focus:outline-none text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div class="mt-12 space-y-4">
+        <a href="#about" class="block text-gray-200 hover:text-blue-300 transition-colors">About</a>
+        <a href="#skills" class="block text-gray-200 hover:text-blue-300 transition-colors">Skills</a>
+        <a href="#projects" class="block text-gray-200 hover:text-blue-300 transition-colors">Projects</a>
+        <a href="#certifications" class="block text-gray-200 hover:text-blue-300 transition-colors">Certifications</a>
+        <a href="#education" class="block text-gray-200 hover:text-blue-300 transition-colors">Education</a>
+        <a href="#contact" class="block text-gray-200 hover:text-blue-300 transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 to-indigo-900 text-white relative">
+    <div class="z-10 text-center p-6 bg-gray-800 bg-opacity-90 rounded-lg shadow-2xl">
+      <div class="w-44 h-60 hero-image rounded-lg mx-auto mb-6 shadow-xl"></div>
+      <h1 class="text-4xl font-bold mb-2">Tony Mikhael Soryan</h1>
+      <p class="text-lg mb-6">Flutter Developer | Mobile Solutions Enthusiast</p>
+      <a href="#projects" class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 font-semibold transition">See My Work</a>
+    </div>
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20 bg-gray-800">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-semibold mb-6 text-gray-100 border-b-2 border-blue-700 pb-2">About Me</h2>
+      <p class="text-lg text-gray-300 leading-relaxed">
+        I'm a Junior Flutter Developer based in Beirut with a strong background in cross-platform mobile apps. I specialize in building responsive, performance-driven applications using Flutter, Firebase, and REST APIs. My AI-powered shark detection system earned top recognition in my department. I'm fluent in English and Arabic and passionate about impactful mobile tech.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-24 bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold mb-12 text-gray-100 border-b-2 border-blue-700 pb-2">Skills</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="flex flex-col items-center">
+          <img src="assets/flutter.jpg" alt="Flutter" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">Flutter</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="assets/dart.png" alt="Dart" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">Dart</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="assets/firebase.png" alt="Firebase" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">Firebase</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="assets/rest.jpg" alt="REST API" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">REST API</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="assets/supabase.png" alt="Supabase" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">Supabase</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="assets/git.png" alt="Git" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">Git</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="assets/clean_architecture.png" alt="Clean Architecture" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">Clean Architecture</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="assets/yolov.jpg" alt="YOLOv8" class="w-12 h-12 object-cover mb-2 rounded">
+          <p class="text-lg font-medium text-gray-200">YOLOv8</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-24 bg-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-semibold mb-12 text-gray-100 border-b-2 border-blue-700 pb-2">Projects</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- AI Shark Detection -->
+        <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <img src="assets/ai shark detection.png" alt="AI Shark Detection" class="w-full h-48 object-cover" />
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2 text-gray-100">AI Shark Detection</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">YOLOv8</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Jetson NX</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Firebase</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Supabase</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Fcm notification</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Flutter</span>
+            </div>
+            <p class="text-sm text-gray-300">Real-time marine safety system built for beaches using AI and mobile alerts.</p>
+            <a href="https://github.com/tonyMikhael100/shark_detection" target="_blank" class="mt-2 inline-block bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-500 transition">View on GitHub</a>
+          </div>
+        </div>
+
+        <!-- E-Commerce Platform -->
+        <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <img src="assets/malka elkhalig e commerce.png" alt="E-Commerce Platform" class="w-full h-48 object-cover" />
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2 text-gray-100">E-Commerce Platform | Dashboard</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Flutter</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Cubit</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Supabase</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Firebase Auth</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Google maps</span>
+            </div>
+            <p class="text-sm text-gray-300">Full-featured mobile store with cart, wishlist, and order management.</p>
+            <a href="https://github.com/tonyMikhael100/electronics_shop" target="_blank" class="mt-2 inline-block bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-500 transition">View on GitHub</a>
+          </div>
+        </div>
+
+         <!-- ScanTrack (Attendance) -->
+         <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <img src="assets/scanTrack.png" alt="ScanTrack (Attendance)(Freelancing)" class="w-full h-48 object-cover" />
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2 text-gray-100">ScanTrack (Attendance)</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Flutter</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">QR Code</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Supabase</span>
+            </div>
+            <p class="text-sm text-gray-300">Attendance management via QR scanning for events and organizations.</p>
+            <a href="https://github.com/tonyMikhael100/scan_track" target="_blank" class="mt-2 inline-block bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-500 transition">View on GitHub</a>
+          </div>
+        </div>
+        <!-- Bookstore App -->
+        <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <img src="assets/bookly.png" alt="Bookstore App" class="w-full h-48 object-cover" />
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2 text-gray-100">Bookstore App</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Flutter</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Cubit</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Restful API</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Firebase Auth</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Firebase Firestore</span>
+            </div>
+            <p class="text-sm text-gray-300">Allows browsing, reading, and purchasing books via Flutter interface.</p>
+            <a href="https://github.com/tonyMikhael100/kimit_graduation_project" target="_blank" class="mt-2 inline-block bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-500 transition">View on GitHub</a>
+          </div>
+        </div>
+
+
+
+        <!-- Weather Forecast App -->
+        <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <img src="assets/weather.png" alt="Weather Forecast App" class="w-full h-48 object-cover" />
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2 text-gray-100">Weather Forecast App</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Flutter</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">OpenWeather API</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Cubit</span>
+            </div>
+            <p class="text-sm text-gray-300">Clean UI app with real-time weather updates and forecasts.</p>
+           
+          </div>
+        </div>
+
+        
+       
+        <!-- Osrty App -->
+        <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <img src="assets/osrty.png" alt="Osrty App" class="w-full h-48 object-cover" />
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-2 text-gray-100">Osrty App</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Flutter</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Firebase</span>
+              <span class="bg-blue-900 text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">Cubit</span>
+            </div>
+            <p class="text-sm text-gray-300">Cross-platform app for daily needs with a focus on UX and modular structure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="py-24 bg-gray-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold mb-10 text-gray-100 border-b-2 border-blue-700 pb-2">Certifications</h2>
+      <div class="space-y-6">
+        <div class="bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h3 class="text-xl font-medium text-gray-200">Complete Mobile Development Bootcamp</h3>
+          <p class="text-gray-400">Focused on Flutter, UI/UX, RESTful APIs, app publishing.</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h3 class="text-xl font-medium text-gray-200">Advanced Udemy Courses</h3>
+          <p class="text-gray-400">Topics: Google Maps, Clean Architecture, State Management, Payment Gateways, Git & GitHub</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="py-24 bg-gray-800">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold mb-10 text-gray-100 border-b-2 border-blue-700 pb-2">Education</h2>
+      <div class="space-y-6">
+        <div class="bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h3 class="text-xl font-medium text-gray-200">Bachelor of Computer Engineering</h3>
+          <p class="text-gray-400">University of Benha, Faculty of Engineering</p>
+          <p class="text-gray-400">Graduated: 2025 | Degree: 83% | Graduation Project: Excellent Grade</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 bg-gray-900">
+    <div class="max-w-3xl mx-auto text-center px-6">
+      <h2 class="text-3xl font-semibold mb-8 text-gray-100 border-b-2 border-blue-700 pb-2">Get in Touch</h2>
+      <p class="mb-2">Email: <a href="mailto:tonymikhael100@gmail.com" class="text-blue-300 hover:underline">tonymikhael100@gmail.com</a></p>
+      <p class="mb-2">Phone: <a href="https://wa.me/201551361200" class="text-blue-300 hover:underline">01551361200</a></p>
+      <p class="mb-2">LinkedIn: <a href="https://www.linkedin.com/in/tony-mikhael-049197233/" class="text-blue-300 hover:underline">https://www.linkedin.com/in/tony-mikhael-049197233</a></p>
+      <p class="mb-2">GitHub: <a href="https://github.com/tonyMikhael100" class="text-blue-300 hover:underline">https://github.com/tonyMikhael100</a></p>
+      <p>Location: Cairo, Egypt</p>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-gray-400 py-6 text-center">
+    <p>© 2025 Tony Mikhael. All rights reserved.</p>
+  </footer>
+
+  <!-- Smooth Scroll + Animations -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        // Close drawer if open on mobile
+        if (window.innerWidth < 768) {
+          document.getElementById('mobile-drawer').classList.add('hidden');
+          document.getElementById('mobile-drawer').classList.add('-translate-x-full');
+        }
+      });
+    });
+
+    gsap.from(".text-center h2, .text-center h1", {
+      scrollTrigger: {
+        trigger: ".text-center",
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 40,
+      duration: 1
+    });
+
+    gsap.from("#skills .flex", {
+      scrollTrigger: {
+        trigger: "#skills",
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+
+    // Drawer Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const closeToggle = document.getElementById('close-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+
+    menuToggle.addEventListener('click', () => {
+      mobileDrawer.classList.remove('hidden');
+      gsap.to(mobileDrawer, { x: 0, duration: 0.3, ease: "power2.out" });
+    });
+
+    closeToggle.addEventListener('click', () => {
+      gsap.to(mobileDrawer, { x: -mobileDrawer.offsetWidth, duration: 0.3, ease: "power2.out", onComplete: () => mobileDrawer.classList.add('hidden') });
+    });
+
+    // Close drawer if clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileDrawer.contains(e.target) && !menuToggle.contains(e.target) && !mobileDrawer.classList.contains('hidden')) {
+        gsap.to(mobileDrawer, { x: -mobileDrawer.offsetWidth, duration: 0.3, ease: "power2.out", onComplete: () => mobileDrawer.classList.add('hidden') });
+      }
+    });
+  </script>
+</body>
+</html>
