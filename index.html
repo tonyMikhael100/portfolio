@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -45,12 +46,10 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     }
-
     /* Custom scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
-
     ::-webkit-scrollbar-track {
       background: #1a1a2e;
     }
@@ -81,17 +80,15 @@
     /* Hero image with modern styling */
     .hero-image {
       background-image: url('assets/tony.jpg');
-      background-size: cover;
+      background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
       width: 280px;
       height: 280px;
       border-radius: 50%;
       position: relative;
-      overflow: hidden;
       border: 2px solid rgba(255, 255, 255, 0.1);
     }
-
     .hero-image::before {
       content: '';
       position: absolute;
@@ -169,7 +166,8 @@
       background: var(--primary-gradient);
       opacity: 0;
       transition: opacity 0.3s ease;
-      z-index: 1;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .project-card:hover::before {
@@ -273,7 +271,7 @@
           </button>
         </div>
         <div class="hidden md:flex space-x-8">
-          <a href="#about" class="nav-link relative px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">About</a>
+          <a href="#home" class="nav-link relative px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">About</a>
           <a href="#skills" class="nav-link relative px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">Skills</a>
           <a href="#projects" class="nav-link relative px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">Projects</a>
           <a href="#certifications" class="nav-link relative px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10">Certifications</a>
@@ -291,7 +289,7 @@
           </svg>
         </button>
         <div class="mt-16 space-y-6">
-          <a href="#about" class="block text-white text-lg font-medium p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:translate-x-2">About</a>
+          <a href="#home" class="block text-white text-lg font-medium p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:translate-x-2">About</a>
           <a href="#skills" class="block text-white text-lg font-medium p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:translate-x-2">Skills</a>
           <a href="#projects" class="block text-white text-lg font-medium p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:translate-x-2">Projects</a>
           <a href="#certifications" class="block text-white text-lg font-medium p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:translate-x-2">Certifications</a>
@@ -359,12 +357,13 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                   </svg>
                 </a>
-                <a href="assets/Tony_mikhael_soryan_Sep(2025).pdf" download="Tony_mikhael_soryan_Sep(2025).pdf"
+                <a href="assets/Tony_mikhael_soryan_Sep(2025).pdf" target="_blank"
                    class="glass border-2 border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 inline-flex items-center justify-center group">
                   <svg class="w-5 h-5 mr-3 transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                   </svg>
-                  Download CV
+                  See my CV
                 </a>
               </div>
             </div>
@@ -932,7 +931,7 @@
   <!-- Advanced JavaScript with Modern Animations -->
   <script>
     // Register GSAP plugins
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     // Scroll Progress Indicator
     function updateScrollProgress() {
@@ -1002,10 +1001,13 @@
       }
 
       if (heroButtons.length > 0) {
+        // Ensure buttons are visible by default
+        gsap.set(heroButtons, { opacity: 1, y: 0 });
+
         tl.from(heroButtons, {
           duration: 0.6,
-          y: 30,
-          opacity: 0,
+          y: 15,
+          opacity: 0.3,
           stagger: 0.1,
           ease: "power2.out"
         }, "-=0.2");
