@@ -23,13 +23,16 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background: var(--dark-gradient);
       overflow-x: hidden;
-      scroll-behavior: smooth;
+      margin-top: 50px;
+
+      
     }
 
     /* Glassmorphism utility classes */
@@ -45,6 +48,7 @@
       backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      margin-top: 50px;
     }
     /* Custom scrollbar */
     ::-webkit-scrollbar {
@@ -281,7 +285,7 @@
       </div>
     </div>
     <!-- Modern Mobile Drawer -->
-    <div id="mobile-drawer" class="fixed top-0 left-0 w-80 glass h-full transform -translate-x-full transition-all duration-500 ease-out z-40 hidden md:hidden">
+    <div id="mobile-drawer" class="fixed top-0 left-0 w-80 h-full transform -translate-x-full transition-all duration-500 ease-out z-40 hidden md:hidden" style="background: linear-gradient(135deg, rgba(26, 32, 44, 0.95) 0%, rgba(45, 55, 72, 0.95) 100%); backdrop-filter: blur(20px); border-right: 1px solid rgba(255, 255, 255, 0.1);">
       <div class="p-6">
         <button id="close-toggle" class="absolute top-6 right-6 focus:outline-none text-white p-2 rounded-lg hover:bg-white/10 transition-all duration-300">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -960,11 +964,12 @@
       });
     });
 
-    // Hero Section Animations
+    // Hero Section Animations - Disabled on mobile for better button visibility
     const heroText = document.querySelector('.hero-text');
     const heroImage = document.querySelector('.hero-image');
+    const isMobile = window.innerWidth <= 768;
 
-    if (heroText) {
+    if (heroText && !isMobile) {
       const heroH1 = heroText.querySelector('h1');
       const typingTexts = heroText.querySelectorAll('.typing-text');
       const heroP = heroText.querySelector('p');
@@ -1001,9 +1006,6 @@
       }
 
       if (heroButtons.length > 0) {
-        // Ensure buttons are visible by default
-        gsap.set(heroButtons, { opacity: 1, y: 0 });
-
         tl.from(heroButtons, {
           duration: 0.6,
           y: 15,
@@ -1011,6 +1013,14 @@
           stagger: 0.1,
           ease: "power2.out"
         }, "-=0.2");
+      }
+    }
+
+    // Ensure buttons are always visible on mobile
+    if (isMobile && heroText) {
+      const heroButtons = heroText.querySelectorAll('.btn-modern, .glass');
+      if (heroButtons.length > 0) {
+        gsap.set(heroButtons, { opacity: 1, y: 0, clearProps: "all" });
       }
     }
 
@@ -1128,12 +1138,15 @@
       }
     });
 
-    // Parallax effect for hero section
+    // Parallax effect for hero section - Disabled on mobile to prevent button clipping
     window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const parallax = document.querySelector('#home');
-      const speed = scrolled * 0.5;
-      parallax.style.transform = `translateY(${speed}px)`;
+      const isMobile = window.innerWidth <= 768;
+      if (!isMobile) {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('#home');
+        const speed = scrolled * 0.5;
+        parallax.style.transform = `translateY(${speed}px)`;
+      }
     });
 
     // Add typing effect to hero text
