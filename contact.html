@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Tony Mikhael Soryan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .iphone-container {
+      position: relative;
+      width: 375px;
+      height: 812px;
+      background: #000;
+      border-radius: 40px;
+      padding: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .iphone-screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      border-radius: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px 10px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px 25px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .back-btn {
+      color: #007AFF;
+      font-size: 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .page-title {
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      flex: 1;
+      text-align: center;
+      margin-right: 60px;
+    }
+
+    .content {
+      padding: 30px 25px;
+      height: calc(100% - 140px);
+      overflow-y: auto;
+      color: white;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .contact-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: url('assets/tony.jpg') center/cover;
+      margin: 0 auto 15px;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-title {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 20px;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .contact-value {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-arrow {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 16px;
+    }
+
+    /* Contact method specific colors */
+    .email .contact-icon { background: linear-gradient(135deg, #EA4335 0%, #D33B2C 100%); }
+    .phone .contact-icon { background: linear-gradient(135deg, #34A853 0%, #2E7D32 100%); }
+    .linkedin .contact-icon { background: linear-gradient(135deg, #0077B5 0%, #005885 100%); }
+    .github .contact-icon { background: linear-gradient(135deg, #333 0%, #000 100%); }
+    .whatsapp .contact-icon { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
+    .location .contact-icon { background: linear-gradient(135deg, #4285F4 0%, #1976D2 100%); }
+
+    .quick-actions {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .quick-actions-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: white;
+      text-align: center;
+    }
+
+    .quick-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .quick-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 15px;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .quick-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .quick-btn i {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .home-indicator {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 134px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+      .iphone-container {
+        width: 400px;
+        height: 860px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .iphone-container {
+        width: 450px;
+        height: 920px;
+      }
+    }
+
+    /* Custom scrollbar */
+    .content::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="iphone-container">
+    <div class="iphone-screen">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="battery-wifi">
+          <i class="fas fa-signal"></i>
+          <i class="fas fa-wifi"></i>
+          <i class="fas fa-battery-three-quarters"></i>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="header">
+        <a href="home.html" class="back-btn">
+          <i class="fas fa-chevron-left"></i>
+          Back
+        </a>
+        <div class="page-title">Get In Touch</div>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <div class="contact-header">
+          <div class="contact-avatar"></div>
+          <div class="contact-name">Tony Mikhael Soryan</div>
+          <div class="contact-title">Let's work together!</div>
+        </div>
+
+        <div class="contact-methods">
+          <a href="mailto:tonymikhael100@gmail.com" class="contact-item email">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">tonymikhael100@gmail.com</div>
+            </div>
+            <div class="contact-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </a>
+
+          <a href="tel:+96176123456" class="contact-item phone">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">+961 76 123 456</div>
+            </div>
+            <div class="contact-arrow">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com/in/tony-mikhael-soryan" target="_blank" class="contact-item linkedin">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">tony-mikhael-soryan</div>
+            </div>
+            <div class="contact-arrow">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </a>
+
+          <a href="https://github.com/tonyMikhael100" target="_blank" class="contact-item github">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">tonyMikhael100</div>
+            </div>
+            <div class="contact-arrow">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </a>
+
+          <a href="https://wa.me/96176123456" target="_blank" class="contact-item whatsapp">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">WhatsApp</div>
+              <div class="contact-value">Message me directly</div>
+            </div>
+            <div class="contact-arrow">
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+          </a>
+
+          <div class="contact-item location">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Beirut, Lebanon</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <div class="quick-actions-title">Quick Actions</div>
+          <div class="quick-buttons">
+            <a href="assets/Tony_mikhael_soryan_Sep(2025).pdf" target="_blank" class="quick-btn">
+              <i class="fas fa-download"></i>
+              Download CV
+            </a>
+            <a href="mailto:tonymikhael100@gmail.com?subject=Project Inquiry" class="quick-btn">
+              <i class="fas fa-briefcase"></i>
+              Hire Me
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Indicator -->
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+  <script>
+    // Update time in status bar
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit',
+        hour12: false 
+      });
+      document.querySelector('.time').textContent = timeString;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+
+    // Add haptic feedback simulation for contact items
+    document.querySelectorAll('.contact-item').forEach(item => {
+      item.addEventListener('click', function() {
+        // Brief vibration effect if supported
+        if (navigator.vibrate) {
+          navigator.vibrate(50);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
