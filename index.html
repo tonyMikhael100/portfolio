@@ -16,25 +16,25 @@
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px 0;
+      padding: 60px 0;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .iphone-container {
       position: relative;
-      width: 100vw;
-      height: calc(100vh - 40px);
-      max-width: 430px;
-      max-height: 892px;
+      width: 90vw;
+      height: calc(100vh - 120px);
+      max-width: 380px;
+      max-height: 700px;
       background: #000;
-      border-radius: 0;
+      border-radius: 25px;
       padding: 0;
-      box-shadow: none;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
 
@@ -42,7 +42,7 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      border-radius: 0;
+      border-radius: 20px;
       position: relative;
       overflow: hidden;
     }
@@ -117,7 +117,6 @@
       gap: 25px;
       flex: 1;
       align-content: start;
-      padding-left: 20px;
     }
 
     .app-icon {
@@ -180,16 +179,24 @@
 
     /* Mobile specific adjustments */
     @media (max-width: 429px) {
+      body {
+        padding: 80px 0;
+      }
+
       .iphone-container {
-        border-radius: 20px;
-        margin: 10px;
-        width: calc(100vw - 20px);
-        height: calc(100vh - 60px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        width: 85vw;
+        height: calc(100vh - 160px);
+        max-height: 600px;
+        border-radius: 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
       }
 
       .iphone-screen {
-        border-radius: 15px;
+        border-radius: 25px;
+      }
+
+      .apps-grid {
+        padding-left: 20px;
       }
     }
 
@@ -199,6 +206,10 @@
         border-radius: 40px;
         padding: 8px;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        width: 430px;
+        height: 932px;
+        max-width: 430px;
+        max-height: 932px;
       }
 
       .iphone-screen {
