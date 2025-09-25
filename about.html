@@ -16,28 +16,32 @@
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
     }
 
     .iphone-container {
       position: relative;
-      width: 375px;
-      height: 812px;
+      width: 100vw;
+      height: 100vh;
+      max-width: 430px;
+      max-height: 932px;
       background: #000;
-      border-radius: 40px;
-      padding: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
     }
 
     .iphone-screen {
       width: 100%;
       height: 100%;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      border-radius: 32px;
+      border-radius: 0;
       position: relative;
       overflow: hidden;
     }
@@ -186,17 +190,19 @@
     .email { background: linear-gradient(135deg, #EA4335 0%, #D33B2C 100%); }
 
     /* Responsive Design */
-    @media (min-width: 768px) {
+    @media (min-width: 430px) {
       .iphone-container {
-        width: 400px;
-        height: 860px;
+        border-radius: 40px;
+        padding: 8px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       }
-    }
 
-    @media (min-width: 1024px) {
-      .iphone-container {
-        width: 450px;
-        height: 920px;
+      .iphone-screen {
+        border-radius: 32px;
+      }
+
+      body {
+        padding: 20px;
       }
     }
 
@@ -213,6 +219,31 @@
     .content::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.3);
       border-radius: 2px;
+    }
+
+    /* Page entrance animation */
+    .iphone-container {
+      animation: slideInFromRight 0.6s ease-out;
+    }
+
+    @keyframes slideInFromRight {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Back button transition */
+    .back-btn {
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      transform: translateX(-5px);
     }
   </style>
 </head>
@@ -247,13 +278,13 @@
         </div>
 
         <div class="description">
-          I'm a Junior Flutter Developer based in Beirut with a strong background in cross-platform mobile applications. I specialize in building responsive, performance-driven applications using Flutter, Firebase, and REST APIs. My AI-powered shark detection system earned top recognition in my department.
+          I'm a Junior Flutter Developer based in Elzaitoun with a strong background in cross-platform mobile applications. I specialize in building responsive, performance-driven applications using Flutter, Firebase, and REST APIs. My AI-powered shark detection system earned top recognition in my department.
         </div>
 
         <div class="info-grid">
           <div class="info-item">
             <div class="info-label">Location</div>
-            <div class="info-value">Beirut, Lebanon</div>
+            <div class="info-value">Elzaitoun, Cairo</div>
           </div>
 
           <div class="info-item">
@@ -296,19 +327,48 @@
   </div>
 
   <script>
+    // Handle back button with transition
+    document.querySelector('.back-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Add exit animation
+      const container = document.querySelector('.iphone-container');
+      container.style.animation = 'slideOutToRight 0.5s ease-in forwards';
+
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 500);
+    });
+
     // Update time in status bar
     function updateTime() {
       const now = new Date();
-      const timeString = now.toLocaleTimeString('en-US', { 
-        hour: 'numeric', 
+      const timeString = now.toLocaleTimeString('en-US', {
+        hour: 'numeric',
         minute: '2-digit',
-        hour12: false 
+        hour12: false
       });
       document.querySelector('.time').textContent = timeString;
     }
 
     updateTime();
     setInterval(updateTime, 1000);
+
+    // Add exit animation keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideOutToRight {
+        0% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>

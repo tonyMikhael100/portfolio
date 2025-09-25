@@ -16,22 +16,25 @@
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      overflow-x: hidden;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
     }
 
     .iphone-container {
       position: relative;
-      width: 375px;
-      height: 812px;
+      width: 100vw;
+      height: 100vh;
+      max-width: 430px;
+      max-height: 932px;
       background: #000;
-      border-radius: 40px;
-      padding: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
       transition: transform 0.3s ease;
     }
 
@@ -39,7 +42,7 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      border-radius: 32px;
+      border-radius: 0;
       position: relative;
       overflow: hidden;
     }
@@ -175,16 +178,27 @@
     .contact { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
 
     /* Responsive Design */
-    @media (min-width: 768px) {
+    @media (min-width: 430px) {
       .iphone-container {
-        width: 400px;
-        height: 860px;
+        border-radius: 40px;
+        padding: 8px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       }
-      
+
+      .iphone-screen {
+        border-radius: 32px;
+      }
+
+      body {
+        padding: 20px;
+      }
+    }
+
+    @media (min-width: 768px) {
       .apps-grid {
         gap: 30px;
       }
-      
+
       .icon-circle {
         width: 70px;
         height: 70px;
@@ -196,22 +210,13 @@
       body {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
       }
-      
+
       .iphone-container {
-        width: 450px;
-        height: 920px;
         transform: rotate(-5deg);
       }
-      
+
       .iphone-container:hover {
         transform: rotate(0deg) scale(1.05);
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .iphone-container {
-        width: 500px;
-        height: 1000px;
       }
     }
 
@@ -233,6 +238,66 @@
 
     .app-icon:hover .icon-circle {
       animation: bounce 1s ease infinite;
+    }
+
+    /* Page transition effects */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .page-transition.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .transition-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+    }
+
+    .transition-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: white;
+      transform: scale(0);
+      transition: transform 0.3s ease 0.2s;
+    }
+
+    .page-transition.active .transition-icon {
+      transform: scale(1);
+    }
+
+    .transition-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease 0.4s;
+    }
+
+    .page-transition.active .transition-title {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Landscape mode for tablets */
@@ -269,6 +334,14 @@
   </style>
 </head>
 <body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition" id="pageTransition">
+    <div class="transition-content">
+      <div class="transition-icon" id="transitionIcon"></div>
+      <div class="transition-title" id="transitionTitle"></div>
+    </div>
+  </div>
+
   <div class="iphone-container">
     <div class="iphone-screen">
       <!-- Status Bar -->
@@ -342,12 +415,75 @@
   </div>
 
   <script>
-    // Add touch feedback for mobile devices
+    // Page transition data
+    const pageData = {
+      'about.html': {
+        icon: '<i class="fas fa-user"></i>',
+        title: 'About',
+        color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+      },
+      'skills.html': {
+        icon: '<i class="fas fa-code"></i>',
+        title: 'Skills',
+        color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+      },
+      'projects.html': {
+        icon: '<i class="fas fa-laptop-code"></i>',
+        title: 'Projects',
+        color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+      },
+      'certifications.html': {
+        icon: '<i class="fas fa-certificate"></i>',
+        title: 'Certificates',
+        color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+      },
+      'education.html': {
+        icon: '<i class="fas fa-graduation-cap"></i>',
+        title: 'Education',
+        color: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+      },
+      'contact.html': {
+        icon: '<i class="fas fa-envelope"></i>',
+        title: 'Contact',
+        color: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+      }
+    };
+
+    // Handle page transitions
+    function navigateToPage(url) {
+      const transition = document.getElementById('pageTransition');
+      const transitionIcon = document.getElementById('transitionIcon');
+      const transitionTitle = document.getElementById('transitionTitle');
+
+      const data = pageData[url];
+      if (data) {
+        transitionIcon.innerHTML = data.icon;
+        transitionIcon.style.background = data.color;
+        transitionTitle.textContent = data.title;
+
+        transition.classList.add('active');
+
+        setTimeout(() => {
+          window.location.href = url;
+        }, 800);
+      } else {
+        window.location.href = url;
+      }
+    }
+
+    // Add click handlers to app icons
     document.querySelectorAll('.app-icon').forEach(icon => {
+      icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        const url = this.getAttribute('href');
+        navigateToPage(url);
+      });
+
+      // Touch feedback for mobile devices
       icon.addEventListener('touchstart', function() {
         this.style.transform = 'scale(0.95)';
       });
-      
+
       icon.addEventListener('touchend', function() {
         this.style.transform = 'scale(1)';
       });
@@ -356,10 +492,10 @@
     // Update time in status bar
     function updateTime() {
       const now = new Date();
-      const timeString = now.toLocaleTimeString('en-US', { 
-        hour: 'numeric', 
+      const timeString = now.toLocaleTimeString('en-US', {
+        hour: 'numeric',
         minute: '2-digit',
-        hour12: false 
+        hour12: false
       });
       document.querySelector('.time').textContent = timeString;
     }
