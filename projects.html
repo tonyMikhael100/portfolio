@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects - Tony Mikhael Soryan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
@@ -117,7 +119,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
     }
 
     .project-info {
@@ -227,6 +229,7 @@
         transform: translateX(100%);
         opacity: 0;
       }
+
       100% {
         transform: translateX(0);
         opacity: 1;
@@ -240,8 +243,85 @@
     .back-btn:hover {
       transform: translateX(-5px);
     }
+
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      animation: zoomIn 0.3s ease;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+
+    .lightbox-close:hover {
+      color: #007AFF;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .project-image {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .project-image:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
+
 <body>
   <div class="iphone-container">
     <div class="iphone-screen">
@@ -266,12 +346,79 @@
 
       <!-- Content -->
       <div class="content">
+        <!-- Documentation App -->
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('assets/doc.png')"></div>
+          <div class="project-info">
+            <div class="project-title">Doctor App</div>
+            <div class="project-description">Professional doctor platform with modern UI and seamless navigation.</div>
+            <div class="tech-tags">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Restful Apis</span>
+              <span class="tech-tag">Cubit</span>
+              <span class="tech-tag">Dio</span>
+              <span class="tech-tag">Retrofit</span>
+              <span class="tech-tag">Freezed</span>
+            </div>
+            <a href="https://github.com/tonyMikhael100/doctor_appointment" target="_blank" class="project-link">
+              <i class="fab fa-github"></i>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Elkmash Project -->
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('assets/elkmash.png')"></div>
+          <div class="project-info">
+            <div class="project-title">Elkmash</div>
+            <div class="project-description">Innovative mobile application for chatting app for employees and managers
+              in elkmash group
+            </div>
+            <div class="tech-tags">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Cubit</span>
+              <span class="tech-tag">Ai agent</span>
+              <span class="tech-tag">Supabase</span>
+              <span class="tech-tag">Firebase Messaging</span>
+              <span class="tech-tag">Notifications</span>
+              <span class="tech-tag">Bubble chat</span>
+            </div>
+            <a href="https://github.com/tonyMikhael100/kama_chat" target="_blank" class="project-link">
+              <i class="fab fa-github"></i>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Sphere Project -->
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('assets/sphere.png')"></div>
+          <div class="project-info">
+            <div class="project-title">Sphere</div>
+            <div class="project-description">Modern application featuring for exploring news books
+              design.</div>
+            <div class="tech-tags">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Clean Architecture</span>
+              <span class="tech-tag">Restful Apis</span>
+              <span class="tech-tag">Cubit</span>
+              <span class="tech-tag">Hive</span>
+            </div>
+            <a href="https://github.com/tonyMikhael100/bookly_clean_arch" target="_blank" class="project-link">
+              <i class="fab fa-github"></i>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+
         <!-- AI Shark Detection -->
         <div class="project-card">
           <div class="project-image" style="background-image: url('assets/ai shark detection.png')"></div>
           <div class="project-info">
             <div class="project-title">AI Shark Detection</div>
-            <div class="project-description">Real-time marine safety system built for beaches using AI and mobile alerts.</div>
+            <div class="project-description">Real-time marine safety system built for beaches using AI and mobile
+              alerts.</div>
             <div class="tech-tags">
               <span class="tech-tag">YOLOv8</span>
               <span class="tech-tag">Jetson NX</span>
@@ -364,7 +511,8 @@
           <div class="project-image" style="background-image: url('assets/osrty.png')"></div>
           <div class="project-info">
             <div class="project-title">Osrty App</div>
-            <div class="project-description">Cross-platform app for daily needs with a focus on UX and modular structure.</div>
+            <div class="project-description">Cross-platform app for daily needs with a focus on UX and modular
+              structure.</div>
             <div class="tech-tags">
               <span class="tech-tag">Flutter</span>
               <span class="tech-tag">Firebase</span>
@@ -383,9 +531,15 @@
     </div>
   </div>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Project Image">
+  </div>
+
   <script>
     // Handle back button with transition
-    document.querySelector('.back-btn').addEventListener('click', function(e) {
+    document.querySelector('.back-btn').addEventListener('click', function (e) {
       e.preventDefault();
 
       const container = document.querySelector('.iphone-container');
@@ -425,6 +579,46 @@
       }
     `;
     document.head.appendChild(style);
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const projectImages = document.querySelectorAll('.project-image');
+
+    // Open lightbox when clicking on project images
+    projectImages.forEach(image => {
+      image.addEventListener('click', function () {
+        const bgImage = this.style.backgroundImage;
+        const imageUrl = bgImage.slice(5, -2); // Extract URL from url("...")
+        lightboxImg.src = imageUrl;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close lightbox when clicking the close button
+    lightboxClose.addEventListener('click', function () {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
   </script>
 </body>
+
 </html>

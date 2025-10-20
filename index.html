@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tony Mikhael Soryan - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
@@ -171,12 +173,33 @@
     }
 
     /* App specific colors */
-    .about { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .skills { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-    .projects { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-    .certifications { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-    .education { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-    .contact { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+    .about {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .skills {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .projects {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .certifications {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    .education {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+
+    .contact {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    }
+
+    .cv {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    }
 
     /* Mobile specific adjustments */
     @media (max-width: 429px) {
@@ -276,17 +299,26 @@
 
     /* Animation for app icons */
     @keyframes bounce {
-      0%, 20%, 53%, 80%, 100% {
-        transform: translate3d(0,0,0);
+
+      0%,
+      20%,
+      53%,
+      80%,
+      100% {
+        transform: translate3d(0, 0, 0);
       }
-      40%, 43% {
-        transform: translate3d(0,-8px,0);
+
+      40%,
+      43% {
+        transform: translate3d(0, -8px, 0);
       }
+
       70% {
-        transform: translate3d(0,-4px,0);
+        transform: translate3d(0, -4px, 0);
       }
+
       90% {
-        transform: translate3d(0,-2px,0);
+        transform: translate3d(0, -2px, 0);
       }
     }
 
@@ -361,23 +393,23 @@
         height: 400px;
         border-radius: 25px;
       }
-      
+
       .iphone-screen {
         border-radius: 20px;
       }
-      
+
       .apps-container {
         padding: 20px;
         flex-direction: row;
         align-items: center;
       }
-      
+
       .profile-section {
         margin-bottom: 0;
         margin-right: 30px;
         flex-shrink: 0;
       }
-      
+
       .apps-grid {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -387,6 +419,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Page Transition Overlay -->
   <div class="page-transition" id="pageTransition">
@@ -460,6 +493,13 @@
             </div>
             <div class="app-name">Contact</div>
           </a>
+
+          <a href="assets/Tony_mikhael_soryan_Sep(2025).pdf" class="app-icon" download target="_blank">
+            <div class="icon-circle cv">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="app-name">CV</div>
+          </a>
         </div>
       </div>
 
@@ -527,18 +567,18 @@
 
     // Add click handlers to app icons
     document.querySelectorAll('.app-icon').forEach(icon => {
-      icon.addEventListener('click', function(e) {
+      icon.addEventListener('click', function (e) {
         e.preventDefault();
         const url = this.getAttribute('href');
         navigateToPage(url);
       });
 
       // Touch feedback for mobile devices
-      icon.addEventListener('touchstart', function() {
+      icon.addEventListener('touchstart', function () {
         this.style.transform = 'scale(0.95)';
       });
 
-      icon.addEventListener('touchend', function() {
+      icon.addEventListener('touchend', function () {
         this.style.transform = 'scale(1)';
       });
     });
@@ -558,4 +598,5 @@
     setInterval(updateTime, 1000);
   </script>
 </body>
+
 </html>
