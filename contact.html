@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Tony Mikhael Soryan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Contact | Tony Mikhael - Flutter Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
+    :root {
+      --primary: #6366F1;
+      --primary-dark: #4F46E5;
+      --secondary: #EC4899;
+      --accent: #14B8A6;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --gray: #64748B;
+      --light: #F8FAFC;
+      --gradient: linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #14B8A6 100%);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,465 +27,293 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      min-height: 100vh;
     }
 
-    .iphone-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      max-width: 430px;
-      max-height: 932px;
-      background: #000;
-      border-radius: 0;
-      padding: 0;
-      box-shadow: none;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .iphone-screen {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      border-radius: 0;
-      position: relative;
-      overflow: hidden;
+    header {
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    .status-bar {
+    header .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 25px 10px;
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      padding: 20px 25px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .back-btn {
-      color: #007AFF;
-      font-size: 16px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .page-title {
-      color: white;
-      font-size: 18px;
-      font-weight: 600;
-      flex: 1;
-      text-align: center;
-      margin-right: 60px;
-    }
-
-    .content {
-      padding: 30px 25px;
-      height: calc(100% - 140px);
-      overflow-y: auto;
-      color: white;
-    }
-
-    .contact-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .contact-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      background: url('assets/tony.jpg') center/cover;
-      margin: 0 auto 15px;
-      border: 3px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .contact-name {
+    .logo {
       font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 5px;
-      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      font-weight: 800;
+      background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .contact-title {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 20px;
-    }
-
-    .contact-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .contact-item {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
+    .back-link {
+      color: var(--gray);
       text-decoration: none;
-      color: white;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 8px;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    .contact-item:hover {
-      transform: translateY(-3px);
-      background: rgba(255, 255, 255, 0.1);
+    .back-link:hover {
+      color: var(--light);
+    }
+
+    .contact-hero {
+      padding: 120px 0 60px;
+      text-align: center;
+    }
+
+    .contact-hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .contact-hero h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-hero p {
+      color: var(--gray);
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-section {
+      padding: 40px 0 80px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: var(--dark-light);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
     }
 
     .contact-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
       color: white;
       flex-shrink: 0;
     }
 
-    .contact-info {
-      flex: 1;
-    }
+    .contact-icon.email { background: linear-gradient(135deg, #EA4335, #FBBC04); }
+    .contact-icon.phone { background: linear-gradient(135deg, #34A853, #2E7D32); }
+    .contact-icon.linkedin { background: linear-gradient(135deg, #0A66C2, #004182); }
+    .contact-icon.github { background: linear-gradient(135deg, #24292e, #0d1117); }
+    .contact-icon.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
+    .contact-icon.location { background: linear-gradient(135deg, #4285F4, #1976D2); }
 
-    .contact-label {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .contact-value {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .contact-arrow {
-      color: rgba(255, 255, 255, 0.4);
+    .contact-info h3 {
       font-size: 16px;
-    }
-
-    /* Contact method specific colors */
-    .email .contact-icon { background: linear-gradient(135deg, #EA4335 0%, #D33B2C 100%); }
-    .phone .contact-icon { background: linear-gradient(135deg, #34A853 0%, #2E7D32 100%); }
-    .linkedin .contact-icon { background: linear-gradient(135deg, #0077B5 0%, #005885 100%); }
-    .github .contact-icon { background: linear-gradient(135deg, #333 0%, #000 100%); }
-    .whatsapp .contact-icon { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
-    .location .contact-icon { background: linear-gradient(135deg, #4285F4 0%, #1976D2 100%); }
-
-    .quick-actions {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .quick-actions-title {
-      font-size: 14px;
       font-weight: 600;
-      margin-bottom: 15px;
-      color: white;
+      margin-bottom: 4px;
+    }
+
+    .contact-info p {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .cta-section {
+      margin-top: 50px;
       text-align: center;
     }
 
-    .quick-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
       gap: 10px;
-    }
-
-    .quick-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 15px;
-      text-decoration: none;
-      color: white;
-      text-align: center;
-      font-size: 12px;
+      padding: 16px 32px;
+      border-radius: 14px;
       font-weight: 600;
-      transition: all 0.3s ease;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s;
     }
 
-    .quick-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
+    .cta-btn.primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
     }
 
-    .quick-btn i {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 5px;
+    .cta-btn.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
     }
 
-    .home-indicator {
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 134px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 3px;
+    .cta-btn.secondary {
+      background: var(--dark-light);
+      color: var(--light);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Responsive Design */
-    @media (min-width: 430px) {
-      .iphone-container {
-        border-radius: 40px;
-        padding: 8px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      }
-
-      .iphone-screen {
-        border-radius: 32px;
-      }
-
-      body {
-        padding: 20px;
-      }
+    .cta-btn.secondary:hover {
+      border-color: var(--primary);
     }
 
-    /* Custom scrollbar */
-    .content::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    .content::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 2px;
-    }
-
-    .content::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 2px;
-    }
-
-    /* Page entrance animation */
-    .iphone-container {
-      animation: slideInFromRight 0.6s ease-out;
-    }
-
-    @keyframes slideInFromRight {
-      0% {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    .back-btn {
-      transition: all 0.3s ease;
-    }
-
-    .back-btn:hover {
-      transform: translateX(-5px);
+    @media (max-width: 768px) {
+      .contact-hero h1 { font-size: 32px; }
+      .contact-hero p { font-size: 16px; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
-  <div class="iphone-container">
-    <div class="iphone-screen">
-      <!-- Status Bar -->
-      <div class="status-bar">
-        <div class="time">9:41</div>
-        <div class="battery-wifi">
-          <i class="fas fa-signal"></i>
-          <i class="fas fa-wifi"></i>
-          <i class="fas fa-battery-three-quarters"></i>
-        </div>
-      </div>
-
-      <!-- Header -->
-      <div class="header">
-        <a href="index.html" class="back-btn">
-          <i class="fas fa-chevron-left"></i>
-          Back
-        </a>
-        <div class="page-title">Get In Touch</div>
-      </div>
-
-      <!-- Content -->
-      <div class="content">
-        <div class="contact-header">
-          <div class="contact-avatar"></div>
-          <div class="contact-name">Tony Mikhael Soryan</div>
-          <div class="contact-title">Let's work together!</div>
-        </div>
-
-        <div class="contact-methods">
-          <a href="mailto:tonymikhael100@gmail.com" class="contact-item email">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Email</div>
-              <div class="contact-value">tonymikhael100@gmail.com</div>
-            </div>
-            <div class="contact-arrow">
-              <i class="fas fa-chevron-right"></i>
-            </div>
-          </a>
-
-          <a href="tel:01551361200" class="contact-item phone">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Phone</div>
-              <div class="contact-value">01551361200</div>
-            </div>
-            <div class="contact-arrow">
-              <i class="fas fa-chevron-right"></i>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/tony-mikhael-049197233" target="_blank" class="contact-item linkedin">
-            <div class="contact-icon">
-              <i class="fab fa-linkedin-in"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">LinkedIn</div>
-              <div class="contact-value">tony-mikhael-049197233</div>
-            </div>
-            <div class="contact-arrow">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-          </a>
-
-          <a href="https://github.com/tonyMikhael100" target="_blank" class="contact-item github">
-            <div class="contact-icon">
-              <i class="fab fa-github"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">GitHub</div>
-              <div class="contact-value">tonyMikhael100</div>
-            </div>
-            <div class="contact-arrow">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-          </a>
-
-          <a href="https://wa.me/01551361200" target="_blank" class="contact-item whatsapp">
-            <div class="contact-icon">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">WhatsApp</div>
-              <div class="contact-value">Message me directly</div>
-            </div>
-            <div class="contact-arrow">
-              <i class="fas fa-external-link-alt"></i>
-            </div>
-          </a>
-
-          <div class="contact-item location">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="contact-info">
-              <div class="contact-label">Location</div>
-              <div class="contact-value">Elzaitoun, Cairo</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="quick-actions">
-          <div class="quick-actions-title">Quick Actions</div>
-          <div class="quick-buttons">
-            <a href="assets/Tony_Mikhael_Cv_April.pdf" target="_blank" class="quick-btn">
-              <i class="fas fa-download"></i>
-              Download CV
-            </a>
-            <a href="mailto:tonymikhael100@gmail.com?subject=Project Inquiry" class="quick-btn">
-              <i class="fas fa-briefcase"></i>
-              Hire Me
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Home Indicator -->
-      <div class="home-indicator"></div>
+  <header>
+    <div class="container">
+      <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-right"></i>
+        Back to Home
+      </a>
+      <div class="logo">TM</div>
     </div>
-  </div>
+  </header>
 
-  <script>
-    // Handle back button with transition
-    document.querySelector('.back-btn').addEventListener('click', function(e) {
-      e.preventDefault();
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Get In <span>Touch</span></h1>
+      <p>Let's work together! Feel free to reach out through any of these channels</p>
+    </div>
+  </section>
 
-      const container = document.querySelector('.iphone-container');
-      container.style.animation = 'slideOutToRight 0.5s ease-in forwards';
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <a href="mailto:tonymikhael100@gmail.com" class="contact-card">
+          <div class="contact-icon email">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Email</h3>
+            <p>tonymikhael100@gmail.com</p>
+          </div>
+        </a>
 
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 500);
-    });
+        <a href="tel:01551361200" class="contact-card">
+          <div class="contact-icon phone">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Phone</h3>
+            <p>+20 155 136 1200</p>
+          </div>
+        </a>
 
-    // Update time in status bar
-    function updateTime() {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('en-US', {
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: false
-      });
-      document.querySelector('.time').textContent = timeString;
-    }
+        <a href="https://www.linkedin.com/in/tony-mikhael-049197233/" target="_blank" class="contact-card">
+          <div class="contact-icon linkedin">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <div class="contact-info">
+            <h3>LinkedIn</h3>
+            <p>tony-mikhael-049197233</p>
+          </div>
+        </a>
 
-    updateTime();
-    setInterval(updateTime, 1000);
+        <a href="https://github.com/tonyMikhael100" target="_blank" class="contact-card">
+          <div class="contact-icon github">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contact-info">
+            <h3>GitHub</h3>
+            <p>tonyMikhael100</p>
+          </div>
+        </a>
 
-    // Add haptic feedback simulation for contact items
-    document.querySelectorAll('.contact-item').forEach(item => {
-      item.addEventListener('click', function() {
-        // Brief vibration effect if supported
-        if (navigator.vibrate) {
-          navigator.vibrate(50);
-        }
-      });
-    });
+        <a href="https://wa.me/201551361200" target="_blank" class="contact-card">
+          <div class="contact-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="contact-info">
+            <h3>WhatsApp</h3>
+            <p>Message me directly</p>
+          </div>
+        </a>
 
-    // Add exit animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes slideOutToRight {
-        0% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        100% {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+        <div class="contact-card">
+          <div class="contact-icon location">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Location</h3>
+            <p>Elzaitoun, Cairo, Egypt</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <div class="cta-buttons">
+          <a href="assets/Tony_mikhael_cv_Flutter_Feb2026.pdf" target="_blank" class="cta-btn primary">
+            <i class="fas fa-download"></i>
+            Download CV
+          </a>
+          <a href="mailto:tonymikhael100@gmail.com?subject=Project Inquiry" class="cta-btn secondary">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>

@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skills - Tony Mikhael Soryan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Skills | Tony Mikhael - Flutter Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
+    :root {
+      --primary: #6366F1;
+      --primary-dark: #4F46E5;
+      --secondary: #EC4899;
+      --accent: #14B8A6;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --gray: #64748B;
+      --light: #F8FAFC;
+      --gradient: linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #14B8A6 100%);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,129 +28,189 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      min-height: 100vh;
     }
 
-    .iphone-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      max-width: 430px;
-      max-height: 932px;
-      background: #000;
-      border-radius: 0;
-      padding: 0;
-      box-shadow: none;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .iphone-screen {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      border-radius: 0;
-      position: relative;
-      overflow: hidden;
+    header {
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .status-bar {
+    header .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 25px 10px;
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      padding: 20px 25px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .back-btn {
-      color: #007AFF;
-      font-size: 16px;
+    .back-link {
+      color: var(--gray);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    .page-title {
-      color: white;
-      font-size: 18px;
-      font-weight: 600;
-      flex: 1;
+    .back-link:hover {
+      color: var(--light);
+    }
+
+    .hero {
+      padding: 120px 0 60px;
       text-align: center;
-      margin-right: 60px;
     }
 
-    .content {
-      padding: 30px 25px;
-      height: calc(100% - 140px);
-      overflow-y: auto;
-      color: white;
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: var(--gray);
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .skills-section {
+      padding: 40px 0 80px;
     }
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
     }
 
     .skill-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--dark-light);
       border-radius: 20px;
-      padding: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
       transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .skill-card:hover {
       transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--primary);
     }
 
     .skill-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      margin: 0 auto 15px;
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 24px;
       color: white;
+      flex-shrink: 0;
+    }
+
+    .skill-icon.flutter {
+      background: linear-gradient(135deg, #02569B, #0175C2);
+    }
+
+    .skill-icon.dart {
+      background: linear-gradient(135deg, #0175C2, #13B9FD);
+    }
+
+    .skill-icon.firebase {
+      background: linear-gradient(135deg, #FFA000, #FF6F00);
+    }
+
+    .skill-icon.supabase {
+      background: linear-gradient(135deg, #3ECF8E, #2DD4BF);
+    }
+
+    .skill-icon.git {
+      background: linear-gradient(135deg, #F05032, #E44C30);
+    }
+
+    .skill-icon.rest {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    }
+
+    .skill-icon.clean {
+      background: linear-gradient(135deg, #9C27B0, #673AB7);
+    }
+
+    .skill-icon.yolo {
+      background: linear-gradient(135deg, #FF9800, #F57C00);
+    }
+
+    .skill-icon.maps {
+      background: linear-gradient(135deg, #4285F4, #34A853);
+    }
+
+    .skill-icon.hive {
+      background: linear-gradient(135deg, #FFC107, #FF8F00);
+    }
+
+    .skill-icon.python {
+      background: linear-gradient(135deg, #3776AB, #FFD43B);
+    }
+
+    .skill-icon.node {
+      background: linear-gradient(135deg, #339933, #68A063);
+    }
+
+    .skill-info {
+      flex: 1;
     }
 
     .skill-name {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
-      margin-bottom: 10px;
-      color: white;
+      margin-bottom: 6px;
     }
 
     .skill-level {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.7);
+      font-size: 13px;
+      color: var(--gray);
       margin-bottom: 10px;
     }
 
     .progress-bar {
-      width: 100%;
       height: 6px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 3px;
       overflow: hidden;
     }
@@ -144,236 +218,179 @@
     .progress-fill {
       height: 100%;
       border-radius: 3px;
+      background: var(--gradient);
       transition: width 1s ease;
     }
 
-    /* Skill specific colors */
-    .flutter .skill-icon { background: linear-gradient(135deg, #02569B 0%, #0175C2 100%); }
-    .flutter .progress-fill { background: linear-gradient(135deg, #02569B 0%, #0175C2 100%); }
-
-    .dart .skill-icon { background: linear-gradient(135deg, #0175C2 0%, #13B9FD 100%); }
-    .dart .progress-fill { background: linear-gradient(135deg, #0175C2 0%, #13B9FD 100%); }
-
-    .firebase .skill-icon { background: linear-gradient(135deg, #FFA000 0%, #FF6F00 100%); }
-    .firebase .progress-fill { background: linear-gradient(135deg, #FFA000 0%, #FF6F00 100%); }
-
-    .rest .skill-icon { background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); }
-    .rest .progress-fill { background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); }
-
-    .supabase .skill-icon { background: linear-gradient(135deg, #3ECF8E 0%, #2DD4BF 100%); }
-    .supabase .progress-fill { background: linear-gradient(135deg, #3ECF8E 0%, #2DD4BF 100%); }
-
-    .git .skill-icon { background: linear-gradient(135deg, #F05032 0%, #E44C30 100%); }
-    .git .progress-fill { background: linear-gradient(135deg, #F05032 0%, #E44C30 100%); }
-
-    .clean .skill-icon { background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%); }
-    .clean .progress-fill { background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%); }
-
-    .yolo .skill-icon { background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%); }
-    .yolo .progress-fill { background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%); }
-
-    .maps .skill-icon { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); }
-    .maps .progress-fill { background: linear-gradient(135deg, #4285F4 0%, #34A853 100%); }
-
-    .hive .skill-icon { background: linear-gradient(135deg, #FFC107 0%, #FF8F00 100%); }
-    .hive .progress-fill { background: linear-gradient(135deg, #FFC107 0%, #FF8F00 100%); }
-
-    .home-indicator {
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 134px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 3px;
-    }
-
-    /* Responsive Design */
-    @media (min-width: 430px) {
-      .iphone-container {
-        border-radius: 40px;
-        padding: 8px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
       }
 
-      .iphone-screen {
-        border-radius: 32px;
+      .hero p {
+        font-size: 16px;
       }
 
-      body {
-        padding: 20px;
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
-    }
-
-    /* Custom scrollbar */
-    .content::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    .content::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 2px;
-    }
-
-    .content::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 2px;
-    }
-
-    /* Page entrance animation */
-    .iphone-container {
-      animation: slideInFromRight 0.6s ease-out;
-    }
-
-    @keyframes slideInFromRight {
-      0% {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    .back-btn {
-      transition: all 0.3s ease;
-    }
-
-    .back-btn:hover {
-      transform: translateX(-5px);
     }
   </style>
 </head>
+
 <body>
-  <div class="iphone-container">
-    <div class="iphone-screen">
-      <!-- Status Bar -->
-      <div class="status-bar">
-        <div class="time">9:41</div>
-        <div class="battery-wifi">
-          <i class="fas fa-signal"></i>
-          <i class="fas fa-wifi"></i>
-          <i class="fas fa-battery-three-quarters"></i>
-        </div>
-      </div>
+  <header>
+    <div class="container">
+      <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-right"></i>
+        Back to Home
+      </a>
+      <div class="logo">TM</div>
+    </div>
+  </header>
 
-      <!-- Header -->
-      <div class="header">
-        <a href="index.html" class="back-btn">
-          <i class="fas fa-chevron-left"></i>
-          Back
-        </a>
-        <div class="page-title">Technical Skills</div>
-      </div>
+  <section class="hero">
+    <div class="container">
+      <h1>Technical <span>Skills</span></h1>
+      <p>Technologies and tools I use to build amazing mobile applications</p>
+    </div>
+  </section>
 
-      <!-- Content -->
-      <div class="content">
-        <div class="skills-grid">
-          <div class="skill-card flutter">
-            <div class="skill-icon">
-              <i class="fab fa-flutter"></i>
-            </div>
+  <section class="skills-section">
+    <div class="container">
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/flutter.jpg" alt="Flutter"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">Flutter</div>
             <div class="skill-level">Expert - 90%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 90%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card dart">
-            <div class="skill-icon">
-              <i class="fas fa-code"></i>
-            </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/dart.png" alt="Dart"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">Dart</div>
             <div class="skill-level">Advanced - 85%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 85%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card firebase">
-            <div class="skill-icon">
-              <i class="fas fa-fire"></i>
-            </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/firebase.png" alt="Firebase"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">Firebase</div>
             <div class="skill-level">Advanced - 80%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 80%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card rest">
-            <div class="skill-icon">
-              <i class="fas fa-exchange-alt"></i>
-            </div>
-            <div class="skill-name">REST API</div>
-            <div class="skill-level">Advanced - 85%</div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 85%"></div>
-            </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/supabase.png" alt="Supabase"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
           </div>
-
-          <div class="skill-card supabase">
-            <div class="skill-icon">
-              <i class="fas fa-database"></i>
-            </div>
+          <div class="skill-info">
             <div class="skill-name">Supabase</div>
             <div class="skill-level">Intermediate - 75%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 75%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card git">
-            <div class="skill-icon">
-              <i class="fab fa-git-alt"></i>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/rest.jpg" alt="REST API"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
+            <div class="skill-name">REST API</div>
+            <div class="skill-level">Advanced - 85%</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
             </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/git.png" alt="Git"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">Git</div>
             <div class="skill-level">Advanced - 80%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 80%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card clean">
-            <div class="skill-icon">
-              <i class="fas fa-layer-group"></i>
-            </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/clean_architecture.png" alt="Clean Architecture"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">Clean Architecture</div>
             <div class="skill-level">Intermediate - 75%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 75%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card yolo">
-            <div class="skill-icon">
-              <i class="fas fa-eye"></i>
-            </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/yolov.jpg" alt="YOLOv8"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">YOLOv8</div>
             <div class="skill-level">Intermediate - 70%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 70%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card maps">
-            <div class="skill-icon">
-              <i class="fas fa-map-marked-alt"></i>
-            </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/maps.jpg" alt="Google Maps"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">Google Maps</div>
             <div class="skill-level">Advanced - 80%</div>
             <div class="progress-bar">
               <div class="progress-fill" style="width: 80%"></div>
             </div>
           </div>
+        </div>
 
-          <div class="skill-card hive">
-            <div class="skill-icon">
-              <i class="fas fa-archive"></i>
-            </div>
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/hive.png" alt="Hive"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
             <div class="skill-name">Hive</div>
             <div class="skill-level">Intermediate - 75%</div>
             <div class="progress-bar">
@@ -381,65 +398,37 @@
             </div>
           </div>
         </div>
+
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/images.png" alt="Python"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
+            <div class="skill-name">Python</div>
+            <div class="skill-level">Intermediate - 70%</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon" style="background: transparent; padding: 0;">
+            <img src="assets/images.png" alt="Node.js"
+              style="width: 50px; height: 50px; border-radius: 12px; object-fit: contain;">
+          </div>
+          <div class="skill-info">
+            <div class="skill-name">Node.js</div>
+            <div class="skill-level">Basic - 50%</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 50%"></div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Home Indicator -->
-      <div class="home-indicator"></div>
     </div>
-  </div>
-
-  <script>
-    // Handle back button with transition
-    document.querySelector('.back-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-
-      const container = document.querySelector('.iphone-container');
-      container.style.animation = 'slideOutToRight 0.5s ease-in forwards';
-
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 500);
-    });
-
-    // Update time in status bar
-    function updateTime() {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString('en-US', {
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: false
-      });
-      document.querySelector('.time').textContent = timeString;
-    }
-
-    updateTime();
-    setInterval(updateTime, 1000);
-
-    // Animate progress bars on load
-    window.addEventListener('load', () => {
-      const progressBars = document.querySelectorAll('.progress-fill');
-      progressBars.forEach((bar, index) => {
-        setTimeout(() => {
-          bar.style.width = bar.style.width;
-        }, index * 100);
-      });
-    });
-
-    // Add exit animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes slideOutToRight {
-        0% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-        100% {
-          transform: translateX(100%);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+  </section>
 </body>
+
 </html>

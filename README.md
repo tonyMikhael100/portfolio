@@ -1,26 +1,26 @@
 # Tony Mikhael Soryan - Portfolio
 
-## 📱 iPhone-Style Portfolio Website
+## Flutter Developer Portfolio
 
-This is a modern, responsive portfolio website designed to mimic the iPhone interface with smooth transitions and interactive app icons.
+Modern, responsive portfolio website showcasing Flutter development skills and projects.
 
-## 🚀 Features
+## Features
 
-- **iPhone-Style Interface**: Authentic iPhone design with status bar, home indicator, and app icons
-- **Responsive Design**: Works perfectly on all devices (mobile, tablet, desktop)
-- **Smooth Transitions**: Beautiful page transitions between sections
-- **Fullscreen Experience**: No scrolling required - takes full viewport
-- **Interactive Elements**: Hover effects, animations, and touch feedback
-- **Modern Technologies**: Pure HTML, CSS, and JavaScript (no frameworks needed)
+- **Modern Dark Theme** - Sleek design with gradient accents
+- **Responsive Design** - Works on mobile, tablet, and desktop
+- **Phone Mockup** - Interactive phone preview on homepage
+- **Smooth Navigation** - Fixed header with animated links
+- **Mobile Menu** - Full-screen mobile navigation
+- **Project Showcase** - Cards with App Store, Google Play, and GitHub links
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 portfolio/
-├── index.html          # Main homepage (iPhone interface)
-├── about.html          # About section
-├── skills.html         # Technical skills
-├── projects.html       # Project showcase
+├── index.html          # Homepage with hero + tech stack
+├── about.html          # About section with stats
+├── skills.html         # Technical skills with progress bars
+├── projects.html       # Project showcase with store links
 ├── certifications.html # Certificates and training
 ├── education.html      # Academic background
 ├── contact.html        # Contact information
@@ -28,7 +28,7 @@ portfolio/
 └── README.md          # This file
 ```
 
-## 🌐 Deployment on Netlify
+## Deployment on Netlify
 
 ### Method 1: Drag & Drop
 1. Go to [Netlify](https://netlify.com)
@@ -44,67 +44,43 @@ portfolio/
    - **Publish directory**: `/` (root directory)
 4. Deploy!
 
-### Method 3: Netlify CLI
-```bash
-# Install Netlify CLI
-npm install -g netlify-cli
+## Tech Stack
 
-# Login to Netlify
-netlify login
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with CSS variables
+- **JavaScript** - Vanilla JS for interactivity
+- **Font Awesome** - Icons
+- **Google Fonts** - Plus Jakarta Sans font
 
-# Deploy from project directory
-netlify deploy
+## Responsive Breakpoints
 
-# Deploy to production
-netlify deploy --prod
-```
+- **Desktop** (> 1200px): Full layout with phone mockup
+- **Tablet** (768px - 1200px): Simplified layout
+- **Mobile** (< 768px): Mobile menu + stacked layout
 
-## 🔧 Technical Details
+## Color Scheme
 
-- **Framework**: Vanilla HTML, CSS, JavaScript
-- **Responsive**: Mobile-first design with progressive enhancement
-- **Performance**: Optimized for fast loading
-- **Compatibility**: Works on all modern browsers
-- **No Build Process**: Ready to deploy as-is
+- **Primary**: #6366F1 (Indigo)
+- **Secondary**: #EC4899 (Pink)
+- **Accent**: #14B8A6 (Teal)
+- **Background**: #0F172A (Dark blue)
+- **Surface**: #1E293B (Lighter dark)
 
-## 📱 Responsive Breakpoints
+## Contact Information
 
-- **Mobile** (< 430px): Fullscreen iPhone interface
-- **Tablet** (430px - 768px): iPhone with rounded corners
-- **Desktop** (> 1024px): Tilted iPhone with hover effects
-- **Landscape Mode**: Horizontal layout for tablets
-
-## 🎨 Color Scheme
-
-Each section has its own gradient theme:
-- **About**: Purple to Blue gradient
-- **Skills**: Pink to Red gradient  
-- **Projects**: Blue to Cyan gradient
-- **Certifications**: Green to Teal gradient
-- **Education**: Pink to Yellow gradient
-- **Contact**: Teal to Pink gradient
-
-## 📞 Contact Information
-
-- **Phone**: 01551361200
-- **WhatsApp**: 01551361200
+- **Phone**: +20 155 136 1200
+- **WhatsApp**: +20 155 136 1200
 - **Email**: tonymikhael100@gmail.com
 - **LinkedIn**: [Tony Mikhael](https://www.linkedin.com/in/tony-mikhael-049197233)
-- **Location**: Elzaitoun, Cairo
+- **GitHub**: [tonyMikhael100](https://github.com/tonyMikhael100)
+- **Location**: Elzaitoun, Cairo, Egypt
 
-## 🚀 Getting Started
+## Getting Started
 
 1. Clone or download this repository
 2. Open `index.html` in your browser
-3. Navigate through the app icons to explore different sections
+3. Navigate through the site
 4. Deploy to Netlify for live hosting
-
-## 📝 Notes
-
-- The site is fully static - no server required
-- All assets are included or linked via CDN
-- Optimized for both touch and mouse interactions
-- Includes smooth page transitions and animations
 
 ---
 
