@@ -5,882 +5,773 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tony Mikhael | Flutter Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    :root {
-      --primary: #6366F1;
-      --primary-dark: #4F46E5;
-      --secondary: #EC4899;
-      --accent: #14B8A6;
-      --dark: #0F172A;
-      --dark-light: #1E293B;
-      --gray: #64748B;
-      --light: #F8FAFC;
-      --gradient: linear-gradient(135deg, #6366F1 0%, #EC4899 50%, #14B8A6 100%);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--dark);
-      color: var(--light);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Header - Completely hidden */
-    header {
-      display: none;
-    }
-
-    .hero {
-      padding-top: 40px;
-      min-height: 100vh;
-    }
-
-    header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: 800;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    nav {
-      display: flex;
-      gap: 30px;
-    }
-
-    nav a {
-      color: var(--gray);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
-      transition: color 0.3s;
-      padding: 8px 0;
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient);
-      transition: width 0.3s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--light);
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    /* Desktop: side by side layout */
-    @media (min-width: 1025px) {
-      .hero-content {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    /* Mobile/Tablet: stacked layout */
-    @media (max-width: 1024px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-text p {
-        margin: 0 auto 30px;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-stats {
-        justify-content: center;
-      }
-
-      .hero-text h1 {
-        font-size: 28px;
-      }
-
-      .hero-text p {
-        font-size: 14px;
-      }
-
-      .tech-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-      }
-
-      .tech-item {
-        padding: 15px;
-      }
-
-      .tech-item img {
-        width: 30px !important;
-        height: 30px !important;
-      }
-
-      .tech-item i {
-        font-size: 24px;
-      }
-
-      .tech-item span {
-        font-size: 11px;
-      }
-
-      .hero-phone {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-      }
-
-      .phone-mockup {
-        width: 220px;
-        height: 440px;
-        border-radius: 30px;
-        transform: none;
-      }
-
-      .phone-screen {
-        border-radius: 22px;
-      }
-
-      .phone-avatar {
-        width: 55px;
-        height: 55px;
-        border-radius: 16px;
-      }
-
-      .phone-name {
-        font-size: 14px;
-      }
-
-      .phone-title {
-        font-size: 10px;
-      }
-
-      .app-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 16px;
-        border-radius: 12px;
-      }
-
-      .app-label {
-        font-size: 9px;
-      }
-
-      .hero-stats {
-        gap: 15px;
-      }
-
-      .stat-number {
-        font-size: 20px;
-      }
-
-      .stat-label {
-        font-size: 10px;
-      }
-    }
-
-    /* Extra small screens */
-    @media (max-width: 480px) {
-      .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-      }
-
-      .tech-item {
-        padding: 10px;
-      }
-
-      .tech-item img {
-        width: 25px !important;
-        height: 25px !important;
-      }
-
-      .tech-item span {
-        font-size: 10px;
-      }
-    }
-
-    .hero-text h1 {
-      font-size: 56px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .hero-text h1 span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-text p {
-      font-size: 18px;
-      color: var(--gray);
-      line-height: 1.7;
-      margin-bottom: 30px;
-      max-width: 500px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 40px;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 15px;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: white;
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
-    }
-
-    .btn-secondary {
-      background: var(--dark-light);
-      color: var(--light);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--primary);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .stat-label {
-      font-size: 13px;
-      color: var(--gray);
-    }
-
-    /* Phone Preview - show on all screens */
-    .hero-phone {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .phone-mockup {
-      width: 280px;
-      height: 560px;
-      background: #000;
-      border-radius: 40px;
-      padding: 10px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(99, 102, 241, 0.2);
-      position: relative;
-      transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
-      transition: transform 0.5s;
-      z-index: 10;
-    }
-
-    .phone-mockup:hover {
-      transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-    }
-
-    .phone-screen {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
-      border-radius: 32px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .phone-notch {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 28px;
-      background: #000;
-      border-radius: 0 0 20px 20px;
-      z-index: 10;
-    }
-
-    .phone-content {
-      padding: 50px 20px 20px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .phone-profile {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .phone-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 24px;
-      background: url('assets/tony.jpg') center/cover;
-      margin: 0 auto 12px;
-      border: 3px solid var(--primary);
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-    }
-
-    .phone-name {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .phone-title {
-      font-size: 12px;
-      color: var(--gray);
-    }
-
-    .phone-apps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      flex: 1;
-    }
-
-    .phone-app {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: transform 0.2s;
-      text-decoration: none;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .phone-app:hover {
-      transform: scale(1.1);
-    }
-
-    .phone-app:active {
-      transform: scale(0.9);
-    }
-
-    .app-icon {
-      width: 55px;
-      height: 55px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: white;
-      position: relative;
-    }
-
-    .app-icon::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
-    }
-
-    .app-icon.about {
-      background: linear-gradient(135deg, #6366F1, #8B5CF6);
-    }
-
-    .app-icon.skills {
-      background: linear-gradient(135deg, #EC4899, #F472B6);
-    }
-
-    .app-icon.projects {
-      background: linear-gradient(135deg, #14B8A6, #2DD4BF);
-    }
-
-    .app-icon.certs {
-      background: linear-gradient(135deg, #F59E0B, #FBBF24);
-    }
-
-    .app-icon.education {
-      background: linear-gradient(135deg, #EF4444, #F87171);
-    }
-
-    .app-icon.contact {
-      background: linear-gradient(135deg, #3B82F6, #60A5FA);
-    }
-
-    .app-label {
-      font-size: 10px;
-      color: var(--gray);
-      font-weight: 500;
-    }
-
-    /* Floating Elements */
-    .float-element {
-      position: absolute;
-      background: var(--dark-light);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      animation: float 3s ease-in-out infinite;
-      z-index: 20;
-    }
-
-    .float-1 {
-      top: 20%;
-      right: -20px;
-      animation-delay: 0s;
-    }
-
-    .float-2 {
-      bottom: 30%;
-      left: -20px;
-      animation-delay: 1s;
-    }
-
-    .float-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-
-    .float-icon.flutter {
-      background: linear-gradient(135deg, #02569B, #0175C2);
-    }
-
-    .float-icon.dart {
-      background: linear-gradient(135deg, #0175C2, #13B9FD);
-    }
-
-    .float-text {
-      font-size: 13px;
-    }
-
-    .float-text strong {
-      display: block;
-      font-weight: 600;
-    }
-
-    .float-text span {
-      font-size: 11px;
-      color: var(--gray);
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    /* Tech Stack Section */
-    .tech-stack {
-      padding: 80px 0;
-      background: var(--dark-light);
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-header h2 {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    .section-header p {
-      color: var(--gray);
-      font-size: 16px;
-    }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 20px;
-    }
-
-    /* Responsive tech grid */
-    @media (max-width: 1024px) {
-      .tech-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-    }
-
-    .tech-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 25px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-
-    .tech-item:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-5px);
-      border-color: var(--primary);
-    }
-
-    .tech-item i {
-      font-size: 36px;
-      margin-bottom: 12px;
-    }
-
-    .tech-item span {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--gray);
-    }
-
-    .tech-item .fa-flutter {
-      color: #02569B;
-    }
-
-    .tech-item .fa-dart {
-      color: #0175C2;
-    }
-
-    .tech-item .fa-fire {
-      color: #FFA000;
-    }
-
-    .tech-item .fa-python {
-      color: #3776AB;
-    }
-
-    .tech-item .fa-node {
-      color: #339933;
-    }
-
-    .tech-item .fa-database {
-      color: #3ECF8E;
-    }
-
-    /* Footer */
-    footer {
-      padding: 30px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      text-align: center;
-    }
-
-    footer p {
-      color: var(--gray);
-      font-size: 14px;
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
-
-  <section class="hero" id="home">
+  <header class="site-header">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1>Hi, I'm <span>Tony Mikhael</span></h1>
-          <p>Flutter Developer crafting beautiful, performant mobile experiences. Building apps that millions of users
-            love with clean architecture and modern patterns.</p>
-          <div class="hero-buttons">
-            <a href="projects.html" class="btn btn-primary">
-              <i class="fas fa-rocket"></i> View Projects
-            </a>
-            <a href="contact.html" class="btn btn-secondary">
-              <i class="fas fa-envelope"></i> Contact Me
-            </a>
-            <a href="assets/Tony_mikhael_cv_may2026.pdf" class="btn btn-secondary" download>
-              <i class="fas fa-download"></i> Download CV
-            </a>
+      <a href="#home" class="brand">
+        <span class="brand-mark">TM</span>
+        <span class="brand-copy">
+          <span class="brand-title">Tony Mikhael</span>
+          <span class="brand-subtitle">Flutter developer building production apps</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="site-nav" data-site-nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero section-anchor" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><i class="fas fa-wave-square"></i> Open to work</span>
+          <div class="hero-contact-bar">
+            <span class="hero-contact-label">Quick Contact</span>
+            <div class="hero-contact-actions">
+              <a href="mailto:tonymikhael100@gmail.com" class="hero-contact-pill">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+              </a>
+              <a href="https://wa.me/201551361200" target="_blank" rel="noreferrer" class="hero-contact-pill">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
-          <div class="hero-stats">
-            <div class="stat">
-              <div class="stat-number">5+</div>
-              <div class="stat-label">Apps Published</div>
+          <h1>I build <span class="highlight">modern Flutter apps</span> that feel simple and ship fast.</h1>
+          <p>
+            I'm Tony Mikhael, a Flutter developer focused on polished UI, clean architecture, and production-ready mobile apps.
+          </p>
+
+          <div class="button-row">
+            <a href="#projects" class="button"><i class="fas fa-arrow-down"></i> Explore projects</a>
+            <a href="#contact" class="ghost-button"><i class="fas fa-paper-plane"></i> Contact me</a>
+            <a href="assets/Tony_mikhael_cv_may2026.pdf" class="ghost-button" download><i class="fas fa-file-arrow-down"></i> Download CV</a>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <strong>5+</strong>
+              <span>Published apps</span>
             </div>
-            <div class="stat">
-              <div class="stat-number">2+</div>
-              <div class="stat-label">Years Experience</div>
+            <div class="metric">
+              <strong>2M+</strong>
+              <span>Users reached</span>
             </div>
-            <div class="stat">
-              <div class="stat-number">2M+</div>
-              <div class="stat-label">Users Reached</div>
+            <div class="metric">
+              <strong>2+</strong>
+              <span>Years of experience</span>
             </div>
           </div>
         </div>
 
-        <div class="hero-phone">
-          <div class="phone-mockup">
-            <div class="phone-screen">
-              <div class="phone-notch"></div>
-              <div class="phone-content">
-                <div class="phone-profile">
-                  <div class="phone-avatar"></div>
-                  <div class="phone-name">Tony Mikhael</div>
-                  <div class="phone-title">Flutter Developer</div>
-                </div>
-                <div class="phone-apps">
-                  <a href="about.html" class="phone-app">
-                    <div class="app-icon about"><i class="fas fa-user"></i></div>
-                    <span class="app-label">About</span>
-                  </a>
-                  <a href="skills.html" class="phone-app">
-                    <div class="app-icon skills"><i class="fas fa-code"></i></div>
-                    <span class="app-label">Skills</span>
-                  </a>
-                  <a href="projects.html" class="phone-app">
-                    <div class="app-icon projects"><i class="fas fa-mobile-alt"></i></div>
-                    <span class="app-label">Projects</span>
-                  </a>
-                  <a href="certifications.html" class="phone-app">
-                    <div class="app-icon certs"><i class="fas fa-certificate"></i></div>
-                    <span class="app-label">Certs</span>
-                  </a>
-                  <a href="education.html" class="phone-app">
-                    <div class="app-icon education"><i class="fas fa-graduation-cap"></i></div>
-                    <span class="app-label">Education</span>
-                  </a>
-                  <a href="contact.html" class="phone-app">
-                    <div class="app-icon contact"><i class="fas fa-envelope"></i></div>
-                    <span class="app-label">Contact</span>
-                  </a>
-                </div>
+        <aside class="showcase-card">
+          <div class="showcase-top">
+            <img src="assets/tony.jpg" alt="Tony Mikhael" class="avatar">
+            <span class="availability">Based in Cairo, Egypt</span>
+          </div>
+          <h2>Clean UI. Strong UX. Reliable delivery.</h2>
+          <p class="role-line">
+            Flutter developer based in Cairo, building mobile products with clean architecture and practical delivery.
+          </p>
+
+          <div class="signal-list" style="margin: 24px 0 18px;">
+            <span>Flutter</span>
+            <span>Dart</span>
+            <span>Firebase</span>
+            <span>Supabase</span>
+            <span>REST APIs</span>
+            <span>AI Integration</span>
+          </div>
+
+          <div class="contact-note">
+            From large-user products to newer AI-assisted tools, my work stays focused on useful design and dependable implementation.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow"><i class="fas fa-user"></i> About</span>
+            <h2 class="section-heading">Product-minded mobile development with real-world shipping experience.</h2>
+          </div>
+          <p class="section-intro page-intro">
+            I build apps that feel simple for users and stay maintainable for teams, with a strong focus on clean architecture, performance, and practical UX.
+          </p>
+        </div>
+
+        <div class="split-layout">
+          <article class="panel">
+            <span class="small-label">Background</span>
+            <h2>Who I am and how I work</h2>
+            <p class="muted">
+              I'm a recent Computer Engineering graduate with hands-on Flutter experience across consumer apps, internal tools,
+              AI-assisted products, and store-published releases. I enjoy turning product ideas into interfaces that feel simple,
+              while keeping the implementation maintainable under real development pressure.
+            </p>
+            <div class="timeline" style="margin-top: 22px;">
+              <article class="timeline-card">
+                <span class="meta"><i class="fas fa-layer-group"></i> Architecture</span>
+                <h3>Clean, modular implementation</h3>
+                <p>Comfortable with Clean Architecture, Cubit/Bloc state management, and feature organization that scales as products grow.</p>
+              </article>
+              <article class="timeline-card">
+                <span class="meta"><i class="fas fa-mobile-screen-button"></i> UX</span>
+                <h3>Interfaces that stay easy to use</h3>
+                <p>I aim for calm, modern experiences with responsive layouts, readable hierarchy, and practical interactions.</p>
+              </article>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="grid-4" style="margin-top: 18px;">
+          <article class="stat-card">
+            <strong>5+</strong>
+            <p>Published apps across App Store and Google Play.</p>
+          </article>
+          <article class="stat-card">
+            <strong>2M+</strong>
+            <p>Total users reached through shipped mobile products.</p>
+          </article>
+          <article class="stat-card">
+            <strong>2+</strong>
+            <p>Years of practical Flutter development experience.</p>
+          </article>
+          <article class="stat-card">
+            <strong>10+</strong>
+            <p>Technologies used across mobile, backend, and AI work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow"><i class="fas fa-briefcase"></i> Experience</span>
+            <h2 class="section-heading">Professional Experience</h2>
+          </div>
+        </div>
+
+        <div class="timeline experience-timeline">
+          <article class="timeline-card experience-card">
+            <div class="experience-head">
+              <div>
+                <span class="meta"><i class="fas fa-brain"></i> Hive Tech</span>
+                <h3>Software Engineer &amp; AI Prompt Engineer</h3>
+              </div>
+              <span class="experience-date">Jul 2025 - Sep 2025</span>
+            </div>
+            <ul class="experience-list">
+              <li>Designed and optimized prompts to improve LLM accuracy, consistency, and usability.</li>
+              <li>Developed the Elkmash Chat app for the Elkmash group.</li>
+              <li>Collaborated with teams to integrate LLM-powered features into client applications.</li>
+              <li>Built and maintained scalable software modules with clean, maintainable code.</li>
+              <li>Researched and tested advanced prompting techniques for automation and innovation.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-card experience-card">
+            <div class="experience-head">
+              <div>
+                <span class="meta"><i class="fas fa-mobile-screen-button"></i> LeapTech Kw</span>
+                <h3>Flutter Developer</h3>
+              </div>
+              <span class="experience-date">Sep 2025 - May 2026</span>
+            </div>
+            <ul class="experience-list">
+              <li>Developed the Leap+ app with clean architecture, Bloc/Cubit state management, and Supabase backend integration.</li>
+              <li>Deployed and published Leap+ to Google Play and the App Store, with TestFlight used for testing and QA.</li>
+            </ul>
+          </article>
+
+          <article class="timeline-card experience-card">
+            <div class="experience-head">
+              <div>
+                <span class="meta"><i class="fas fa-globe"></i> Pan Arab Media</span>
+                <h3>Flutter Developer</h3>
+              </div>
+              <span class="experience-date">Sep 2025 - Present</span>
+            </div>
+            <ul class="experience-list">
+              <li>Worked on Marah World, a children’s edutainment platform serving families across the Middle East with high-concurrency video and interactive content.</li>
+              <li>Resolved critical bugs and performance bottlenecks, helping maintain app stability and a 99.9% crash-free rate.</li>
+              <li>Implemented scalable Bloc/Cubit state management that reduced code redundancy and improved development velocity.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow"><i class="fas fa-rocket"></i> Projects</span>
+            <h2 class="section-heading">Apps built for scale, utility, and better everyday experiences.</h2>
+          </div>
+          <p class="section-intro page-intro">
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card featured">
+            <div class="project-visual"><img src="assets/marah_world.png" alt="Marah World"></div>
+            <span class="project-meta"><i class="fas fa-users"></i> 2M+ users reached</span>
+            <h3>Marah World</h3>
+            <p>High-scale kids platform serving families across the Middle East with interactive video content, offline support, and smooth cross-platform performance.</p>
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>Clean Architecture</span>
+              <span>Video streaming</span>
+              <span>Offline-first</span>
+            </div>
+            <div class="project-links">
+              <a href="https://apps.apple.com/ma/app/%D8%B9%D8%A7%D9%84%D9%85-%D9%85%D8%B1%D8%AD-marah-world/id1465583245?l=ar" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-apple"></i> App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=com.apptrainers.marahkg" target="_blank" rel="noreferrer"><i class="fab fa-google-play"></i> Google Play</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/minwayn_postere.png" alt="Min Wayn"></div>
+            <span class="project-meta"><i class="fas fa-magnifying-glass"></i> Community commerce</span>
+            <h3>Min Wayn</h3>
+            <p>Visual search platform where users help each other discover products and earn points for valuable contributions.</p>
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>Visual search</span>
+              <span>Rewards system</span>
+            </div>
+            <div class="project-links">
+              <a href="https://apps.apple.com/us/app/min-wayn-%D9%85%D9%86-%D9%88%D9%8A%D9%86/id6758146200" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-apple"></i> App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=com.leaptechkw.minwayn.android&hl=en" target="_blank" rel="noreferrer"><i class="fab fa-google-play"></i> Google Play</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/leap.png" alt="Leap+"></div>
+            <span class="project-meta"><i class="fas fa-building"></i> Internal platform</span>
+            <h3>Leap+</h3>
+            <p>All-in-one employee app combining work tools, company updates, and engagement features in one mobile experience.</p>
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>Supabase</span>
+              <span>Push notifications</span>
+            </div>
+            <div class="project-links">
+              <a href="https://play.google.com/store/apps/details?id=com.leap.techplusplus&hl=en" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-google-play"></i> Google Play</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/resupply_ai.png" alt="Resupply AI"></div>
+            <span class="project-meta"><i class="fas fa-brain"></i> AI-assisted workflow</span>
+            <h3>Resupply AI</h3>
+            <p>AI-powered product connecting businesses with U.S. government contract opportunities through a clear mobile experience.</p>
+            <div class="project-tags">
+              <span>AI integration</span>
+              <span>REST APIs</span>
+              <span>Flutter</span>
+            </div>
+            <div class="project-links">
+              <a href="https://apps.apple.com/us/app/resupply-ai/id6756544446" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-apple"></i> App Store</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/scanTrack.png" alt="ScanTrack"></div>
+            <span class="project-meta"><i class="fas fa-qrcode"></i> Attendance and events</span>
+            <h3>ScanTrack</h3>
+            <p>Attendance management app using QR scanning and real-time tracking for events and organizations.</p>
+            <div class="project-tags">
+              <span>QR scanning</span>
+              <span>Supabase</span>
+              <span>Real-time</span>
+            </div>
+            <div class="project-links">
+              <a href="https://apps.apple.com/eg/app/scantrack/id6747943595" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-apple"></i> App Store</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/doc.png" alt="Doctor App"></div>
+            <span class="project-meta"><i class="fas fa-stethoscope"></i> Healthcare workflow</span>
+            <h3>Doctor App</h3>
+            <p>Healthcare platform for appointment booking and patient management with a professional, service-oriented interface.</p>
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>Cubit</span>
+              <span>Dio</span>
+              <span>Freezed</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/tonyMikhael100/doctor_appointment" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-github"></i> View code</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/sphere.png" alt="Sphere"></div>
+            <span class="project-meta"><i class="fas fa-book-open"></i> Content discovery</span>
+            <h3>Sphere</h3>
+            <p>Modern app concept for exploring news and books with offline-friendly behavior and a clean browsing experience.</p>
+            <div class="project-tags">
+              <span>Clean Architecture</span>
+              <span>Hive</span>
+              <span>REST APIs</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/tonyMikhael100/bookly_clean_arch" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-github"></i> View code</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/ai shark detection.png" alt="AI Shark Detection"></div>
+            <span class="project-meta"><i class="fas fa-shield-halved"></i> Graduation project</span>
+            <h3>AI Shark Detection</h3>
+            <p>Real-time marine safety system using YOLOv8, Jetson NX, and mobile alerts to improve safety at beaches.</p>
+            <div class="project-tags">
+              <span>YOLOv8</span>
+              <span>Jetson NX</span>
+              <span>Firebase</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/tonyMikhael100/shark_detection" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-github"></i> View code</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/malka elkhalig e commerce.png" alt="E-Commerce Platform"></div>
+            <span class="project-meta"><i class="fas fa-cart-shopping"></i> Commerce</span>
+            <h3>E-Commerce Platform</h3>
+            <p>Mobile shopping experience with cart, wishlist, payment flow support, and order management.</p>
+            <div class="project-tags">
+              <span>Supabase</span>
+              <span>Google Maps</span>
+              <span>Payments</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/tonyMikhael100/electronics_shop" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-github"></i> View code</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/elkmash.png" alt="Elkmash"></div>
+            <span class="project-meta"><i class="fas fa-comments"></i> Team communication</span>
+            <h3>Elkmash</h3>
+            <p>Chat product for employees and managers with real-time communication and AI agent integration.</p>
+            <div class="project-tags">
+              <span>Supabase</span>
+              <span>Firebase</span>
+              <span>AI agent</span>
+              <span>Real-time chat</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/tonyMikhael100/kama_chat" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-github"></i> View code</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/bookly.png" alt="Bookstore App"></div>
+            <span class="project-meta"><i class="fas fa-store"></i> Practice build</span>
+            <h3>Bookstore App</h3>
+            <p>Book browsing and purchasing interface with live data, solid state handling, and clean screen composition.</p>
+            <div class="project-tags">
+              <span>REST API</span>
+              <span>Firebase</span>
+              <span>State management</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/tonyMikhael100/kimit_graduation_project" target="_blank" rel="noreferrer" class="primary-link"><i class="fab fa-github"></i> View code</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/weather.png" alt="Weather Forecast"></div>
+            <span class="project-meta"><i class="fas fa-cloud-sun"></i> Private repo</span>
+            <h3>Weather Forecast</h3>
+            <p>Weather app with real-time updates, forecast screens, and a focused clean UI.</p>
+            <div class="project-tags">
+              <span>OpenWeather API</span>
+              <span>Cubit</span>
+              <span>Clean UI</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual"><img src="assets/osrty.png" alt="Osrty"></div>
+            <span class="project-meta"><i class="fas fa-layer-group"></i> Private repo</span>
+            <h3>Osrty</h3>
+            <p>Cross-platform app for daily needs with a strong emphasis on modularity, UX, and practical feature organization.</p>
+            <div class="project-tags">
+              <span>Firebase</span>
+              <span>Modular structure</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow"><i class="fas fa-code"></i> Skills</span>
+            <h2 class="section-heading">The tools I rely on to ship modern Flutter apps.</h2>
+          </div>
+          <p class="section-intro page-intro">
+            These are the technologies and patterns I use most often when building, structuring, and polishing mobile products.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/flutter.jpg" alt="Flutter"></div>
+              <div><h3>Flutter</h3><span class="skill-level">Expert - 90%</span></div>
+            </div>
+            <p>My primary framework for cross-platform product development.</p>
+            <div class="progress"><span style="width: 90%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/dart.png" alt="Dart"></div>
+              <div><h3>Dart</h3><span class="skill-level">Advanced - 85%</span></div>
+            </div>
+            <p>Strong day-to-day language fluency for scalable app architecture and UI work.</p>
+            <div class="progress"><span style="width: 85%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/firebase.png" alt="Firebase"></div>
+              <div><h3>Firebase</h3><span class="skill-level">Advanced - 80%</span></div>
+            </div>
+            <p>Used for notifications, backend features, and real-world product integrations.</p>
+            <div class="progress"><span style="width: 80%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/supabase.png" alt="Supabase"></div>
+              <div><h3>Supabase</h3><span class="skill-level">Intermediate - 75%</span></div>
+            </div>
+            <p>Useful for rapid product development with strong real-time and backend support.</p>
+            <div class="progress"><span style="width: 75%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/rest.jpg" alt="REST API"></div>
+              <div><h3>REST APIs</h3><span class="skill-level">Advanced - 85%</span></div>
+            </div>
+            <p>Comfortable integrating APIs cleanly with robust state and network handling.</p>
+            <div class="progress"><span style="width: 85%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/git.png" alt="Git"></div>
+              <div><h3>Git</h3><span class="skill-level">Advanced - 80%</span></div>
+            </div>
+            <p>Version control workflows for collaboration, iteration, and safer delivery.</p>
+            <div class="progress"><span style="width: 80%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/clean_architecture.png" alt="Clean Architecture"></div>
+              <div><h3>Clean Architecture</h3><span class="skill-level">Intermediate - 75%</span></div>
+            </div>
+            <p>A preferred approach when I want features to scale without turning messy.</p>
+            <div class="progress"><span style="width: 75%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/yolov.jpg" alt="YOLOv8"></div>
+              <div><h3>YOLOv8</h3><span class="skill-level">Intermediate - 70%</span></div>
+            </div>
+            <p>Applied in AI-powered safety workflows and real-time detection use cases.</p>
+            <div class="progress"><span style="width: 70%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/maps.jpg" alt="Google Maps"></div>
+              <div><h3>Google Maps</h3><span class="skill-level">Advanced - 80%</span></div>
+            </div>
+            <p>Location interfaces, map flows, and practical product features tied to place.</p>
+            <div class="progress"><span style="width: 80%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo"><img src="assets/hive.png" alt="Hive"></div>
+              <div><h3>Hive</h3><span class="skill-level">Intermediate - 75%</span></div>
+            </div>
+            <p>Lightweight local storage support for faster, more resilient app experiences.</p>
+            <div class="progress"><span style="width: 75%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo skill-logo-python" aria-hidden="true"><i class="fab fa-python"></i></div>
+              <div><h3>Python</h3><span class="skill-level">Intermediate - 70%</span></div>
+            </div>
+            <p>Helpful for AI experimentation, scripting, and backend-adjacent workflows.</p>
+            <div class="progress"><span style="width: 70%"></span></div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-card-head">
+              <div class="skill-logo skill-logo-node" aria-hidden="true"><i class="fab fa-node-js"></i></div>
+              <div><h3>Node.js</h3><span class="skill-level">Basic - 50%</span></div>
+            </div>
+            <p>Used when lightweight backend or tooling work is needed around the product.</p>
+            <div class="progress"><span style="width: 50%"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="education">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow"><i class="fas fa-graduation-cap"></i> Education</span>
+            <h2 class="section-heading">Computer engineering foundation with a strong interest in mobile and AI.</h2>
+          </div>
+          <p class="section-intro page-intro">
+            My degree gave me the systems thinking behind the products I build now, especially around software structure, problem solving, and applied AI.
+          </p>
+        </div>
+
+        <div class="split-layout">
+          <article class="panel">
+            <span class="small-label">University of Benha</span>
+            <h2>Bachelor of Computer Engineering</h2>
+            <p class="muted">
+              Faculty of Engineering, 2020 to 2025. I graduated with an 83% final grade and earned an Excellent evaluation for my graduation project.
+            </p>
+            <div class="metrics">
+              <div class="metric">
+                <strong>2025</strong>
+                <span>Graduation year</span>
+              </div>
+              <div class="metric">
+                <strong>83%</strong>
+                <span>Overall grade</span>
+              </div>
+              <div class="metric">
+                <strong>Excellent</strong>
+                <span>Project evaluation</span>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="float-element float-1">
-            <img src="assets/flutter.jpg" alt="Flutter" style="width: 40px; height: 40px; border-radius: 10px; object-fit: contain;">
-            <div class="float-text">
-              <strong>Flutter</strong>
-              <span>Primary Framework</span>
+          <article class="panel">
+            <span class="small-label">Highlights</span>
+            <h2>What stood out during university</h2>
+            <div class="timeline" style="margin-top: 22px;">
+              <article class="timeline-card">
+                <span class="meta"><i class="fas fa-trophy"></i> Graduation project</span>
+                <h3>AI Shark Detection System</h3>
+                <p>Recognized with an Excellent grade for combining mobile alerts, AI detection, and a practical safety use case.</p>
+              </article>
+              <article class="timeline-card">
+                <span class="meta"><i class="fas fa-code"></i> Technical focus</span>
+                <h3>Mobile and AI integration</h3>
+                <p>Final-year work leaned heavily toward mobile development, software engineering, and applied AI systems.</p>
+              </article>
             </div>
-          </div>
+          </article>
+        </div>
 
-          <div class="float-element float-2">
-            <img src="assets/dart.png" alt="Dart" style="width: 40px; height: 40px; border-radius: 10px; object-fit: contain;">
-            <div class="float-text">
-              <strong>Dart</strong>
-              <span>Primary Language</span>
+        <div class="subject-list" style="margin-top: 18px;">
+          <span>Data Structures</span>
+          <span>Algorithms</span>
+          <span>Software Engineering</span>
+          <span>Database Systems</span>
+          <span>Computer Networks</span>
+          <span>Operating Systems</span>
+          <span>Mobile Computing</span>
+          <span>AI and ML</span>
+          <span>Web Development</span>
+          <span>System Analysis</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="certifications">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow"><i class="fas fa-certificate"></i> Certifications</span>
+            <h2 class="section-heading">Training that deepened both product thinking and implementation skills.</h2>
+          </div>
+          <p class="section-intro page-intro">
+            My learning path has been practical: courses that directly improved how I build apps, structure code, and deliver complete products.
+          </p>
+        </div>
+
+        <div class="cert-grid">
+          <article class="timeline-card">
+            <span class="meta"><i class="fas fa-mobile-screen-button"></i> Completed program</span>
+            <h3>Complete Mobile Development Bootcamp</h3>
+            <p>Comprehensive training in Flutter development, UI/UX fundamentals, REST API integration, app publishing, and mobile architecture.</p>
+            <div class="project-tags" style="margin-top: 18px;">
+              <span>Flutter</span>
+              <span>UI/UX design</span>
+              <span>REST APIs</span>
+              <span>App publishing</span>
+              <span>Mobile architecture</span>
             </div>
+          </article>
+
+          <article class="timeline-card">
+            <span class="meta"><i class="fas fa-graduation-cap"></i> Multiple courses</span>
+            <h3>Advanced Udemy Courses</h3>
+            <p>Specialized learning around Google Maps, Clean Architecture, state management, payment gateways, and Git/GitHub workflows.</p>
+            <div class="project-tags" style="margin-top: 18px;">
+              <span>Google Maps</span>
+              <span>Clean Architecture</span>
+              <span>State management</span>
+              <span>Payment gateways</span>
+              <span>Git and GitHub</span>
+              <span>Advanced Flutter</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow"><i class="fas fa-paper-plane"></i> Contact</span>
+            <h2 class="section-heading">Let's build something useful together.</h2>
+          </div>
+          <p class="section-intro page-intro">
+            Need a Flutter developer for your team or product? Let's connect by email, LinkedIn, or WhatsApp.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <article class="hero-copy">
+            <span class="small-label">Availability</span>
+            <h2>Available for freelance, full-time, and product work.</h2>
+            <p class="muted">
+              I'm based in Elzaitoun, Cairo, Egypt, and comfortable working with remote teams building mobile-first products.
+            </p>
+            <div class="button-row">
+              <a href="mailto:tonymikhael100@gmail.com?subject=Project Inquiry" class="button"><i class="fas fa-envelope"></i> Email me</a>
+              <a href="assets/Tony_mikhael_cv_may2026.pdf" target="_blank" rel="noreferrer" class="ghost-button"><i class="fas fa-file"></i> Open CV</a>
+            </div>
+            <div class="contact-note">
+              Best first message: a short note about your app, team, or the Flutter work you need.
+            </div>
+          </article>
+
+          <div class="contact-grid">
+            <a href="mailto:tonymikhael100@gmail.com" class="contact-card">
+              <div class="contact-card-head">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <span class="contact-label">Email</span>
+                  <h3>tonymikhael100@gmail.com</h3>
+                </div>
+              </div>
+              <p>Best for project discussions and introductions.</p>
+            </a>
+
+            <a href="tel:01551361200" class="contact-card">
+              <div class="contact-card-head">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                  <span class="contact-label">Phone</span>
+                  <h3>+20 155 136 1200</h3>
+                </div>
+              </div>
+              <p>Direct contact for faster coordination when needed.</p>
+            </a>
+
+            <a href="https://www.linkedin.com/in/tony-mikhael-049197233/" target="_blank" rel="noreferrer" class="contact-card">
+              <div class="contact-card-head">
+                <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                <div>
+                  <span class="contact-label">LinkedIn</span>
+                  <h3>tony-mikhael-049197233</h3>
+                </div>
+              </div>
+              <p>Great for professional networking and role opportunities.</p>
+            </a>
+
+            <a href="https://github.com/tonyMikhael100" target="_blank" rel="noreferrer" class="contact-card">
+              <div class="contact-card-head">
+                <div class="contact-icon"><i class="fab fa-github"></i></div>
+                <div>
+                  <span class="contact-label">GitHub</span>
+                  <h3>tonyMikhael100</h3>
+                </div>
+              </div>
+              <p>Browse public repositories and past technical work.</p>
+            </a>
+
+            <a href="https://wa.me/201551361200" target="_blank" rel="noreferrer" class="contact-card">
+              <div class="contact-card-head">
+                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                <div>
+                  <span class="contact-label">WhatsApp</span>
+                  <h3>Message directly</h3>
+                </div>
+              </div>
+              <p>Useful for quick communication and informal updates.</p>
+            </a>
+
+            <article class="contact-card">
+              <div class="contact-card-head">
+                <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+                <div>
+                  <span class="contact-label">Location</span>
+                  <h3>Elzaitoun, Cairo, Egypt</h3>
+                </div>
+              </div>
+              <p>Working comfortably with both local and remote teams.</p>
+            </article>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="tech-stack" id="skills">
+  <footer class="site-footer">
     <div class="container">
-      <div class="section-header">
-        <h2>Tech Stack</h2>
-        <p>Technologies I work with daily</p>
+      <p>&copy; <span data-current-year></span> Tony Mikhael. Single-page portfolio with section-based navigation.</p>
+      <div class="footer-links">
+        <a href="https://github.com/tonyMikhael100" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/tony-mikhael-049197233/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="#contact">Contact</a>
       </div>
-      <div class="tech-grid">
-        <div class="tech-item">
-          <img src="assets/flutter.jpg" alt="Flutter" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 8px; object-fit: contain;">
-          <span>Flutter</span>
-        </div>
-        <div class="tech-item">
-          <img src="assets/dart.png" alt="Dart" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 8px; object-fit: contain;">
-          <span>Dart</span>
-        </div>
-        <div class="tech-item">
-          <img src="assets/firebase.png" alt="Firebase" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 8px; object-fit: contain;">
-          <span>Firebase</span>
-        </div>
-        <div class="tech-item">
-          <img src="assets/supabase.png" alt="Supabase" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 8px; object-fit: contain;">
-          <span>Supabase</span>
-        </div>
-        <div class="tech-item">
-          <img src="assets/images.png" alt="Python" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 8px; object-fit: contain;">
-          <span>Python</span>
-        </div>
-        <div class="tech-item">
-          <img src="assets/git.png" alt="Git" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 8px; object-fit: contain;">
-          <span>Git</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>© 2024 Tony Mikhael. Built with <i class="fas fa-heart" style="color: var(--secondary);"></i> using Flutter</p>
     </div>
   </footer>
 
-  <script>
-    // Smooth scroll for nav links
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // Update active nav on scroll
-    const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (scrollY >= sectionTop - 100) {
-          current = section.getAttribute('id');
-        }
-      });
-      document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
-    });
-
-    // Mobile Navigation
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileNavClose = document.getElementById('mobileNavClose');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-    menuToggle.addEventListener('click', () => {
-      mobileNav.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-
-    mobileNavClose.addEventListener('click', () => {
-      mobileNav.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
-  </script>
+  <script src="assets/app.js"></script>
 </body>
 
 </html>
